@@ -4,10 +4,13 @@
 
 <h2>Step 1: Nmap basic scan</h2>
 
-  Nmap -Pn -p- -vv <ip address>
+  nmap -Pn -p- -vv <ip address>
 
-  Nmap -Pn -p- -sU -vv <ip address>
+  nmap -Pn -p- -sU -vv <ip address>
 
+  Fast:
+
+  nmap -sS -sV -Pn -A -v <ip> -oX name.xml
 
 <h2> 2: Nmap version and vulnerability Scan:</h2>
 
@@ -19,9 +22,9 @@ Grab banners manually for more clarity:
 
 <h2>Step 3: Any web port(s) for further enumeration?</h2>
 
-  Nikto -port {web ports} -host <ip address> -o <output file.txt>
-
-  Dirb http{s}://<ip address>:<port> /usr/share/wordlist/dirb/{common/small/vulns}.txt
+  Nikto -port {web ports} -host <ip address> -o <output file.txt> -C all
+ 
+  Dirb http{s}://<ip address>:<port> /usr/share/wordlists/dirb/{common/small/vulns}.txt
 
   Gobuster -u http://<ip-address> -w /usr/share/Seclists/Discovery/Web_Content/common.txt
 
@@ -150,8 +153,8 @@ Is anonymous login allowed?
 
 If yes, is directory listing possible? Can a file be ‘get’ or ‘send’?
 
-Use browser: f
-  tp://<ip-address> , What do you find?
+Use browser: 
+	ftp://<ip-address> , What do you find?
 
 
 <H2>Step 10: Password Cracking / Brute Forcing</H2>
