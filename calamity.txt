@@ -35,3 +35,7 @@ dirb http://10.10.10.27:80/ -w
 [*] Using code '404' as not found for 10.10.10.27
 [+] Found http://10.10.10.27:80/icons/ 403 (10.10.10.27)
 [+] Found http://10.10.10.27:80/uploads/ 200 (10.10.10.27)
+
+admin:admin
+
+

