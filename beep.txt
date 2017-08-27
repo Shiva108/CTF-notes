@@ -140,6 +140,12 @@ msf auxiliary(ssl) > run
 [*] 10.10.10.7:443        - Has common name localhost.localdomain
 [*] 10.10.10.7:443        - Scanned 1 of 1 hosts (100% complete)
 
+nikto -h http://10.10.10.7/ -o beep__nikto.xml -port 80 -C all -Format xml
++ Root page / redirects to: https://10.10.10.7/
++ Apache/2.2.3 appears to be outdated (current is at least Apache/2.4.12). Apache 2.0.65 (final release) and 2.2.29 are also current.
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
+
+
 Adapt scan+exploit to SSL
 
 

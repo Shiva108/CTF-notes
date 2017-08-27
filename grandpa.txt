@@ -1,11 +1,11 @@
 PORT   STATE SERVICE VERSION
 80/tcp open  http    Microsoft IIS httpd 6.0
-| http-methods: 
+| http-methods:
 |   Supported Methods: OPTIONS TRACE GET HEAD COPY PROPFIND SEARCH LOCK UNLOCK DELETE PUT POST MOVE MKCOL PROPPATCH
 |_  Potentially risky methods: TRACE COPY PROPFIND SEARCH LOCK UNLOCK DELETE PUT MOVE MKCOL PROPPATCH
 |_http-server-header: Microsoft-IIS/6.0
 |_http-title: Error
-| http-webdav-scan: 
+| http-webdav-scan:
 |   Server Date: Wed, 23 Aug 2017 21:11:08 GMT
 |   Allowed Methods: OPTIONS, TRACE, GET, HEAD, COPY, PROPFIND, SEARCH, LOCK, UNLOCK
 |   WebDAV type: Unkown
@@ -21,7 +21,7 @@ Hosts
 
 address      mac  name  os_name       os_flavor  os_sp  purpose  info  comments
 -------      ---  ----  -------       ---------  -----  -------  ----  --------
-10.10.10.14             Windows 2003                    server         
+10.10.10.14             Windows 2003                    server
 
 Services
 ========
@@ -36,8 +36,8 @@ nikto -host 10.10.10.14 -o grandpa_nikto.xml -C all
 
 	Retrieved ms-author-via header: MS-FP/4.0,DAV
 	+ Uncommon header 'ms-author-via' found, with contents: MS-FP/4.0,DAV
-	+ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, COPY, PROPFIND, SEARCH, LOCK, UNLOCK 
-	+ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH 
+	+ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, COPY, PROPFIND, SEARCH, LOCK, UNLOCK
+	+ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH
 	+ OSVDB-5646: HTTP method ('Public' Header): 'DELETE' may allow clients to remove files on the web server.
 	+ OSVDB-397: HTTP method ('Public' Header): 'PUT' method could allow clients to save files on the web server.
 	+ OSVDB-5647: HTTP method ('Public' Header): 'MOVE' may allow clients to change file locations on the web server.
@@ -61,28 +61,28 @@ dirb http://10.10.10.14:80 /usr/share/wordlists/dirb/common.txt
 	+/vulns/iis.txt
 
 	---- Scanning URL: http://10.10.10.14:80/ ----
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/                                                                                                                         
-		                                                                                                                                                                   
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/
+
 	---- Entering directory: http://10.10.10.14:80/_vti_bin/ ----
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/                                                                                                                
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_aut/                                                                                                                
-		                                                                                                                                                                   
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_aut/
+
 	---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_adm/ ----
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/                                                                                                  
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/help/                                                                                                           
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/images/                                                                                                         
-		                                                                                                                                                                   
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/help/
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/images/
+
 	---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_aut/ ----
-		                                                                                                                                                                   
+
 	---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/ ----
-	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/system_web/                                                                                       
-		                                                                                                                                                                   
+	==> DIRECTORY: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/system_web/
+
 	---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_adm/help/ ----
-		                                                                                                                                                                   
+
 ---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_adm/images/ ----
-                                                                                                                                                                       
+
 ---- Entering directory: http://10.10.10.14:80/_vti_bin/_vti_adm/aspnet_client/system_web/ ----
-                                                                               .shtml 
+                                                                               .shtml
 
 Exploit:
 exploit/windows/iis/iis_webdav_scstoragepathfromurl
@@ -103,13 +103,3 @@ run post/multi/recon/local_exploit_suggester
 
 priv esc:
 	exploit/windows/local/ms14_070_tcpip_ioctl
-
-
-
-
-
-
-
-
-
-
