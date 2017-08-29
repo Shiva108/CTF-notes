@@ -21,21 +21,42 @@ host         port   proto  name     state     info
 
 dirb http://10.10.10.27:80/ -w
 
----- Scanning URL: http://10.10.10.27:80/ ----
-+ http://10.10.10.27:80/admin.php (CODE:200|SIZE:451)
-+ http://10.10.10.27:80/index.html (CODE:200|SIZE:514)
-+ http://10.10.10.27:80/server-status (CODE:403|SIZE:299)
-==> DIRECTORY: http://10.10.10.27:80/uploads/
+  ---- Scanning URL: http://10.10.10.27:80/ ----
+  + http://10.10.10.27:80/admin.php (CODE:200|SIZE:451)
+  + http://10.10.10.27:80/index.html (CODE:200|SIZE:514)
+  + http://10.10.10.27:80/server-status (CODE:403|SIZE:299)
+  ==> DIRECTORY: http://10.10.10.27:80/uploads/
 
----- Entering directory: http://10.10.10.27:80/uploads/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.
-    (Use mode '-w' if you want to scan it anyway)
-+ http://10.10.10.27:80/uploads/passwd (CODE:200|SIZE:0)
+  ---- Entering directory: http://10.10.10.27:80/uploads/ ----
+  (!) WARNING: Directory IS LISTABLE. No need to scan it.
+      (Use mode '-w' if you want to scan it anyway)
+  + http://10.10.10.27:80/uploads/passwd (CODE:200|SIZE:0)
 
-[*] Using code '404' as not found for 10.10.10.27
-[+] Found http://10.10.10.27:80/icons/ 403 (10.10.10.27)
-[+] Found http://10.10.10.27:80/uploads/ 200 (10.10.10.27)
+  [*] Using code '404' as not found for 10.10.10.27
+  [+] Found http://10.10.10.27:80/icons/ 403 (10.10.10.27)
+  [+] Found http://10.10.10.27:80/uploads/ 200 (10.10.10.27)
+
+Uniscan
+
+| Directory check:
+| [+] CODE: 200 URL: http://10.10.10.27/uploads/
+===================================================================================================
+|
+| File check:
+| [+] CODE: 200 URL: http://10.10.10.27/admin.php
+| [+] CODE: 200 URL: http://10.10.10.27/index.html
+
 
 admin:admin
 
+Spoilers
 
+  &cmd=whoami to the end of the URL and it will run whoami
+
+  hint in /home/xalvas
+
+  /home/xalvas/dontforget.txt
+
+   login the admin page > curl is a friend
+
+   priv esc > binary bof exploit development > bof in corlan team
