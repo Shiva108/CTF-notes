@@ -17,13 +17,14 @@
   Nmap -Pn -sV -O -pT:{TCP ports found in step 1},U:{UDP ports found in step 1} -script *vuln* <ip address>
 
 Grab banners manually for more clarity:
+
   nc -nv <ip-address> <port>
 
 
 <h2>Step 3: Any web port(s) for further enumeration?</h2>
 
   Nikto -port {web ports} -host <ip address> -o <output file.txt> -C all
- 
+
   Dirb http{s}://<ip address>:<port> /usr/share/wordlists/dirb/{common/small/vulns}.txt
 
   Gobuster -u http://<ip-address> -w /usr/share/Seclists/Discovery/Web_Content/common.txt
@@ -105,7 +106,7 @@ Can you mount the smb share locally?
 
 Check NMAP Scripts for SMB, DCERPC and NETBIOS
 
-Step 7: Any SMTP ports available?
+<h2>Step 7: Any SMTP ports available?</h2>
 
 Enumerate Users:
 
@@ -149,23 +150,23 @@ Eg: enumerating running processes:
 
 <H2>Step 9: FTP Ports Discovered</H2>
 
-Is anonymous login allowed?
+  Is anonymous login allowed?
 
-If yes, is directory listing possible? Can a file be ‘get’ or ‘send’?
+  If yes, is directory listing possible? Can a file be ‘get’ or ‘send’?
 
-Use browser: 
-	ftp://<ip-address> , What do you find?
+  Use browser:
+  	ftp://<ip-address> , What do you find?
 
 
 <H2>Step 10: Password Cracking / Brute Forcing</H2>
 
-Try this as the last resort or in case the Passwd/Shadow/SAM files are in possession:
+  Try this as the last resort or in case the Passwd/Shadow/SAM files are in possession:
 
-For linux, first combine passwd & shadow files:
-  unshadow [passwd-file] [shadow-file] > unshadowed.txt
+  For linux, first combine passwd & shadow files:
+    unshadow [passwd-file] [shadow-file] > unshadowed.txt
 
-Then, use John on the unshadowed file using a wordlist or rules mangling :
-  john –rules –wordlist=<wordlist file> unshadowed.txt
+  Then, use John on the unshadowed file using a wordlist or rules mangling :
+    john –rules –wordlist=<wordlist file> unshadowed.txt
 
 Identifying Hash: hash-identifier
 
