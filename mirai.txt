@@ -1,0 +1,70 @@
+Mirai 10.10.10.48
+
+Nmap
+
+  PORT   STATE SERVICE VERSION
+  22/tcp open  ssh     OpenSSH 6.7p1 Debian 5+deb8u3 (protocol 2.0)
+  | ssh-hostkey:
+  |   1024 aa:ef:5c:e0:8e:86:97:82:47:ff:4a:e5:40:18:90:c5 (DSA)
+  |   2048 e8:c1:9d:c5:43:ab:fe:61:23:3b:d7:e4:af:9b:74:18 (RSA)
+  |   256 b6:a0:78:38:d0:c8:10:94:8b:44:b2:ea:a0:17:42:2b (ECDSA)
+  |_  256 4d:68:40:f7:20:c4:e5:52:80:7a:44:38:b8:a2:a7:52 (EdDSA)
+  53/tcp open  domain  dnsmasq 2.76
+  | dns-nsid:
+  |_  bind.version: dnsmasq-2.76
+  80/tcp open  http    lighttpd 1.4.35
+  | http-methods:
+  |_  Supported Methods: OPTIONS GET HEAD POST
+  |_http-server-header: lighttpd/1.4.35
+
+address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+-------      ---  ----  -------  ---------  -----  -------  ----  --------
+10.10.10.48             Linux               3.X    server
+
+host         port  proto  name    state  info
+----         ----  -----  ----    -----  ----
+10.10.10.48  22    tcp    ssh     open   OpenSSH 6.7p1 Debian 5+deb8u3 protocol 2.0
+10.10.10.48  53    tcp    domain  open   dnsmasq 2.76
+10.10.10.48  80    tcp    http    open   lighttpd 1.4.35
+
+Nikto
+  Uncommon header 'x-pi-hole' found, with contents: A black hole for Internet advertisements.
+  + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+  + Allowed HTTP Methods: OPTIONS, GET, HEAD, POST
+  + Cookie PHPSESSID created without the httponly flag
+  + OSVDB-3092: /admin/: This might be interesting...
+  + OSVDB-3093: /admin/index.php: This might be interesting... has been seen in web logs from an unknown scanner.
+
+Dirb
+  ---- Scanning URL: http://10.10.10.48/ ----
+  ==> DIRECTORY: http://10.10.10.48/admin/
+  + http://10.10.10.48/swfobject.js (CODE:200|SIZE:61)
+
+  ---- Entering directory: http://10.10.10.48/admin/ ----
+  + http://10.10.10.48/admin/.git/HEAD (CODE:200|SIZE:23)
+  ==> DIRECTORY: http://10.10.10.48/admin/img/
+  + http://10.10.10.48/admin/index.php (CODE:200|SIZE:14617)
+  + http://10.10.10.48/admin/LICENSE (CODE:200|SIZE:14164)
+  ==> DIRECTORY: http://10.10.10.48/admin/scripts/
+  ==> DIRECTORY: http://10.10.10.48/admin/style/
+
+  ---- Entering directory: http://10.10.10.48/admin/img/ ----
+
+  ---- Entering directory: http://10.10.10.48/admin/scripts/ ----
+  ==> DIRECTORY: http://10.10.10.48/admin/scripts/vendor/
+
+  ---- Entering directory: http://10.10.10.48/admin/style/ ----
+  ==> DIRECTORY: http://10.10.10.48/admin/style/vendor/
+
+  ---- Entering directory: http://10.10.10.48/admin/scripts/vendor/ ----
+  + http://10.10.10.48/admin/scripts/vendor/LICENSE (CODE:200|SIZE:1085)
+
+  ---- Entering directory: http://10.10.10.48/admin/style/vendor/ ----
+  + http://10.10.10.48/admin/style/vendor/LICENSE (CODE:200|SIZE:1085)
+
+Uniscan
+  File check:
+  | [+] CODE: 200 URL: http://10.10.10.48/admin/help.php
+  | [+] CODE: 200 URL: http://10.10.10.48/admin/index.php
+
+  
