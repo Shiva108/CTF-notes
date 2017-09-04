@@ -67,4 +67,83 @@ Uniscan
   | [+] CODE: 200 URL: http://10.10.10.48/admin/help.php
   | [+] CODE: 200 URL: http://10.10.10.48/admin/index.php
 
-  
+Default password ssh
+  user: pi
+  password: raspberry
+
+https://www.cs.montana.edu/courses/309/topics/4-disks/debugfs_example.html
+
+Linux / ssh
+  cat /etc/fstab
+  cd media/usbstick
+  sudo debugfs /dev/sdb
+  debugfs -w
+    open /dev/sdb -w
+    ls -d
+    cat <12>
+    mi <12>
+                          Mode    [0100644]
+                       User ID    [0]
+                      Group ID    [0]
+                          Size    [0]
+                 Creation time    [1502688435]
+             Modification time    [1502688435]
+                   Access time    [1502688430]
+                 Deletion time    [1502688435]
+                    Link count    [0]
+              Block count high    [0]
+                   Block count    [0]
+                    File flags    [0x80000]
+                    Generation    [0xa63921a0]
+                      File acl    [0]
+           High 32bits of size    [0]
+              Fragment address    [0]
+               Direct Block #0    [62218]
+               Direct Block #1    [4]
+               Direct Block #2    [0]
+               Direct Block #3    [0]
+               Direct Block #4    [0]
+               Direct Block #5    [0]
+               Direct Block #6    [0]
+               Direct Block #7    [0]
+               Direct Block #8    [0]
+               Direct Block #9    [0]
+              Direct Block #10    [0]
+              Direct Block #11    [0]
+                Indirect Block    [0]
+         Double Indirect Block    [0]
+         Triple Indirect Block    [0]
+
+         debugfs: dump <12> /tmp/file.000
+
+
+pi@raspberrypi:/media/usbstick $ strings /dev/sdb
+  >r &
+  /media/usbstick
+  lost+found
+  root.txt
+  damnit.txt
+  >r &
+  >r &
+  /media/usbstick
+  lost+found
+  root.txt
+  damnit.txt
+  >r &
+  /media/usbstick
+  2]8^
+  lost+found
+  root.txt
+  damnit.txt
+  >r &
+  3d3e483143ff12ec505d026fa13e020b
+  Damnit! Sorry man I accidentally deleted your files off the USB stick.
+  Do you know if there is any way to get them back?
+  -James
+
+
+
+
+
+user.txt ff837707441b257a20e32199d7c8838d
+root.txt
