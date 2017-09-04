@@ -1,1 +1,1 @@
-# prep_notes_OSCP
+# CTF-notes as prep for oscp
