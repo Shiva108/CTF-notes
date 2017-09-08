@@ -1,101 +1,104 @@
 10.10.10.46
 
-[+] 10.10.10.46 running Wordpress 4.8
+Wpscan
+  [+] 10.10.10.46 running Wordpress 4.8
 
-wpscan -u 10.10.10.46 --random-agent -e vp,vt,u
+  wpscan -u 10.10.10.46 --random-agent -e vp,vt,u
 
-[!] The WordPress 'http://10.10.10.46/readme.html' file exists exposing a version number
-[+] Interesting header: LINK: <http://apocalyst.htb/?rest_route=/>; rel="https://api.w.org/"
-[+] Interesting header: SERVER: Apache/2.4.18 (Ubuntu)
-[+] XML-RPC Interface available under: http://10.10.10.46/xmlrpc.php
-[!] Upload directory has directory listing enabled: http://10.10.10.46/wp-content/uploads/
-[!] Includes directory has directory listing enabled: http://10.10.10.46/wp-includes/
+  [!] The WordPress 'http://10.10.10.46/readme.html' file exists exposing a version number
+  [+] Interesting header: LINK: <http://apocalyst.htb/?rest_route=/>; rel="https://api.w.org/"
+  [+] Interesting header: SERVER: Apache/2.4.18 (Ubuntu)
+  [+] XML-RPC Interface available under: http://10.10.10.46/xmlrpc.php
+  [!] Upload directory has directory listing enabled: http://10.10.10.46/wp-content/uploads/
+  [!] Includes directory has directory listing enabled: http://10.10.10.46/wp-includes/
 
-[+] Identified the following 1 user/s:
-    +----+----------+-----------------------------------+
-    | Id | Login    | Name                              |
-    +----+----------+-----------------------------------+
-    | 1  | falaraki | falaraki – Apocalypse Preparation |
-    +----+----------+-----------------------------------+
+  [+] Identified the following 1 user/s:
+      +----+----------+-----------------------------------+
+      | Id | Login    | Name                              |
+      +----+----------+-----------------------------------+
+      | 1  | falaraki | falaraki – Apocalypse Preparation |
+      +----+----------+-----------------------------------+
 
-wpscan -u http://10.10.10.46 -U falaraki -w /usr/share/wordlists/rockyou.txt -t 16
+  wpscan -u http://10.10.10.46 -U falaraki -w /usr/share/wordlists/rockyou.txt -t 16
 
 nmap -sS -sV -Pn -A -vv -v -oX fs.xml 10.10.10.46
 
-PORT   STATE SERVICE REASON         VERSION
-22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
-|   2048 fd:ab:0f:c9:22:d5:f4:8f:7a:0a:29:11:b4:04:da:c9 (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC31v5ON0qrpNu/jcyTlljgNneZ/fMZ7CGOyDjCMa1Qc6YtMbYdd9H3o8u3nbiakd18yS/NCI3zXhO/q+2K644h+ex5EBruAkxig0cNgu5kBJznU3V1+cOQNuEx4Vk81/7d2k2kGnYwfXsXWtyz1EKC2FsbQiz4bgov/JteUcTtFRdBypCk1Ereo+zOFj2oydthRPgjW1w0mkfXEgknEbnFcb3Ey5QI60FC6gy/oWy3UyKNn3qkNq5XsMxVj4tbA4wP4yHIBoGUOLphSKpSDX8K+PoEgZ3Auo3zYjUw8rMPb3LSeXs5PNLj97vishrGzAVBdgHk7pzKyv2UDgvrVq0/
-|   256 76:92:39:0a:57:bd:f0:03:26:78:c7:db:1a:66:a5:bc (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM93PeqWOJlPlf9AK3ytgwWlOpQUC/hBoT6wvalkI2otqamAa/FboxVa7hSZdIivlnyTViO8mMGSRXergrTXar4=
-|   256 12:12:cf:f1:7f:be:43:1f:d5:e6:6d:90:84:25:c8:bd (EdDSA)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPuP4PNCgZu2qrKNZLu+PaCCyf5Eqq5no6CgJJPsST9h
-80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.18 ((Ubuntu))
-|_http-generator: WordPress 4.8
-| http-methods: 
-|_  Supported Methods: GET HEAD POST OPTIONS
-|_http-server-header: Apache/2.4.18 (Ubuntu)
-|_http-title: Apocalypse Preparation Blog
+  PORT   STATE SERVICE REASON         VERSION
+  22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+  | ssh-hostkey:
+  |   2048 fd:ab:0f:c9:22:d5:f4:8f:7a:0a:29:11:b4:04:da:c9 (RSA)
+  | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC31v5ON0qrpNu/jcyTlljgNneZ/fMZ7CGOyDjCMa1Qc6YtMbYdd9H3o8u3nbiakd18yS/NCI3zXhO/q+2K644h+ex5EBruAkxig0cNgu5kBJznU3V1+cOQNuEx4Vk81/7d2k2kGnYwfXsXWtyz1EKC2FsbQiz4bgov/JteUcTtFRdBypCk1Ereo+zOFj2oydthRPgjW1w0mkfXEgknEbnFcb3Ey5QI60FC6gy/oWy3UyKNn3qkNq5XsMxVj4tbA4wP4yHIBoGUOLphSKpSDX8K+PoEgZ3Auo3zYjUw8rMPb3LSeXs5PNLj97vishrGzAVBdgHk7pzKyv2UDgvrVq0/
+  |   256 76:92:39:0a:57:bd:f0:03:26:78:c7:db:1a:66:a5:bc (ECDSA)
+  | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM93PeqWOJlPlf9AK3ytgwWlOpQUC/hBoT6wvalkI2otqamAa/FboxVa7hSZdIivlnyTViO8mMGSRXergrTXar4=
+  |   256 12:12:cf:f1:7f:be:43:1f:d5:e6:6d:90:84:25:c8:bd (EdDSA)
+  |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPuP4PNCgZu2qrKNZLu+PaCCyf5Eqq5no6CgJJPsST9h
+  80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.18 ((Ubuntu))
+  |_http-generator: WordPress 4.8
+  | http-methods:
+  |_  Supported Methods: GET HEAD POST OPTIONS
+  |_http-server-header: Apache/2.4.18 (Ubuntu)
+  |_http-title: Apocalypse Preparation Blog
 
-[+] Found http://10.10.10.46:80/Log 301
-[+] Found http://10.10.10.46:80/any 301
-[+] Found http://10.10.10.46:80/build 301
-[+] Found http://10.10.10.46:80/blog 301
-[+] Found http://10.10.10.46:80/broken 301
-[+] Found http://10.10.10.46:80/can 301
-[+] Found http://10.10.10.46:80/down 301
-[+] Found http://10.10.10.46:80/dragon 301
-[+] Found http://10.10.10.46:80/events 301
-[+] Found http://10.10.10.46:80/get 301
-[+] Found http://10.10.10.46:80/hidden 301
-[+] Found http://10.10.10.46:80/header 301
-[+] Found http://10.10.10.46:80/information 301
-[+] Found http://10.10.10.46:80/info 301
-[+] Found http://10.10.10.46:80/main 301
-[+] Found http://10.10.10.46:80/meta 301
-[+] Found http://10.10.10.46:80/number 301
-[+] Found http://10.10.10.46:80/page 301
-[+] Found http://10.10.10.46:80/personal 301
-[+] Found http://10.10.10.46:80/power 301
-[+] Found http://10.10.10.46:80/post 301
-[+] Found http://10.10.10.46:80/reference 301
-[+] Found http://10.10.10.46:80/site 301
-[+] Found http://10.10.10.46:80/start 301
-[+] Found http://10.10.10.46:80/text 301
-[*] Using code '404' as not found for files with extension 
-[+] Found http://10.10.10.46:80/Log 301
-[+] Found http://10.10.10.46:80/any 301
-[+] Found http://10.10.10.46:80/blog 301
-[+] Found http://10.10.10.46:80/build 301
-[+] Found http://10.10.10.46:80/broken 301
-[+] Found http://10.10.10.46:80/can 301
-[+] Found http://10.10.10.46:80/down 301
-[+] Found http://10.10.10.46:80/dragon 301
-[+] Found http://10.10.10.46:80/events 301
-[+] Found http://10.10.10.46:80/get 301
-[+] Found http://10.10.10.46:80/hidden 301
-[+] Found http://10.10.10.46:80/header 301
-[+] Found http://10.10.10.46:80/information 301
-[+] Found http://10.10.10.46:80/info 301
-[+] Found http://10.10.10.46:80/main 301
-[+] Found http://10.10.10.46:80/meta 301
-[+] Found http://10.10.10.46:80/number 301
-[+] Found http://10.10.10.46:80/page 301
-[+] Found http://10.10.10.46:80/personal 301
-[+] Found http://10.10.10.46:80/post 301
-[+] Found http://10.10.10.46:80/power 301
-[+] Found http://10.10.10.46:80/reference 301
-[+] Found http://10.10.10.46:80/site 301
-[+] Found http://10.10.10.46:80/start 301
-[+] Found http://10.10.10.46:80/text 301
 
 nmap -Pn -p- -vv -v -A 10.10.10.46 -oX fs1.xml
 
 SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.2
 
 fimap -u 'http://10.10.10.46/wp-content/uploads/' -4 - v 0
-	Not positives 
+	Not positives
+
+nikto 10.10.10.46
+  Server leaks inodes via ETags, header found with file /down/, fields: 0x9d 0x55549bf3e2655
+  + OSVDB-3092: /down/: This might be interesting...
+  + OSVDB-3092: /hidden/: This might be interesting...
+  + OSVDB-3092: /idea/: This might be interesting...
+  + OSVDB-3092: /info/: This might be interesting...
+  + OSVDB-3092: /information/: This might be interesting...
+  + OSVDB-3233: /icons/README: Apache default file found.
+  + /wp-links-opml.php: This WordPress script reveals the installed version.
+  + OSVDB-3092: /license.txt: License file found may identify site software.
+  + Cookie wordpress_test_cookie created without the httponly flag
+  + OSVDB-3268: /wp-content/uploads/: Directory indexing found.
+  + /wp-content/uploads/: Wordpress uploads directory is browsable. This may reveal sensitive information
 
 
-
+Uniscan
+  IP: 10.10.10.46
+  | [+] CODE: 200 URL: http://10.10.10.46/RSS/
+  | [+] CODE: 200 URL: http://10.10.10.46/accounts/
+  | [+] CODE: 200 URL: http://10.10.10.46/after/
+  | [+] CODE: 200 URL: http://10.10.10.46/announcement/
+  | [+] CODE: 200 URL: http://10.10.10.46/art/
+  | [+] CODE: 200 URL: http://10.10.10.46/bit/
+  | [+] CODE: 200 URL: http://10.10.10.46/blog/
+  | [+] CODE: 200 URL: http://10.10.10.46/book/
+  | [+] CODE: 200 URL: http://10.10.10.46/build/
+  | [+] CODE: 200 URL: http://10.10.10.46/custom/
+  | [+] CODE: 200 URL: http://10.10.10.46/down/
+  | [+] CODE: 200 URL: http://10.10.10.46/end/
+  | [+] CODE: 200 URL: http://10.10.10.46/events/
+  | [+] CODE: 200 URL: http://10.10.10.46/final/
+  | [+] CODE: 200 URL: http://10.10.10.46/fire/
+  | [+] CODE: 200 URL: http://10.10.10.46/for/
+  | [+] CODE: 200 URL: http://10.10.10.46/from/
+  | [+] CODE: 200 URL: http://10.10.10.46/get/
+  | [+] CODE: 200 URL: http://10.10.10.46/good/
+  | [+] CODE: 200 URL: http://10.10.10.46/heads/
+  | [+] CODE: 200 URL: http://10.10.10.46/hidden/
+  | [+] CODE: 200 URL: http://10.10.10.46/icon/
+  | [+] CODE: 200 URL: http://10.10.10.46/info/
+  | [+] CODE: 200 URL: http://10.10.10.46/information/
+  | [+] CODE: 200 URL: http://10.10.10.46/main/
+  | [+] CODE: 200 URL: http://10.10.10.46/name/
+  | [+] CODE: 200 URL: http://10.10.10.46/org/
+  | [+] CODE: 200 URL: http://10.10.10.46/page/
+  | [+] CODE: 200 URL: http://10.10.10.46/pictures/
+  | [+] CODE: 200 URL: http://10.10.10.46/post/
+  | [+] CODE: 200 URL: http://10.10.10.46/site/
+  | [+] CODE: 200 URL: http://10.10.10.46/state/
+  | [+] CODE: 200 URL: http://10.10.10.46/term/
+  | [+] CODE: 200 URL: http://10.10.10.46/thanks/
+  | [+] CODE: 200 URL: http://10.10.10.46/the/
+  | [+] CODE: 200 URL: http://10.10.10.46/use/
+  | [+] CODE: 200 URL: http://10.10.10.46/used/
+  | [+] CODE: 200 URL: http://10.10.10.46/visiting/
