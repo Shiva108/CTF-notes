@@ -102,3 +102,11 @@ Uniscan
   | [+] CODE: 200 URL: http://10.10.10.46/use/
   | [+] CODE: 200 URL: http://10.10.10.46/used/
   | [+] CODE: 200 URL: http://10.10.10.46/visiting/
+
+  binwalk -e apoc.jpg
+
+  DECIMAL       HEXADECIMAL     DESCRIPTION
+  --------------------------------------------------------------------------------
+  0             0x0             JPEG image data, JFIF standard 1.01
+  30            0x1E            TIFF image data, little-endian offset of first image directory: 8
+  269           0x10D           Unix path: /www.w3.org/1999/02/22-rdf-syntax-ns#"> <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpMM="http

