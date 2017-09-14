@@ -142,6 +142,7 @@ pi@raspberrypi:/media/usbstick $ strings /dev/sdb
   -James
 
 
+  sudo su
 
 
 
