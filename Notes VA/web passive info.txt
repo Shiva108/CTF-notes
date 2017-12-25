@@ -1,2 +1,13 @@
 https://dnsdumpster.com/
 https://builtwith.com/nssystems.com
+
+Netcraft – http://www.netcraft.net
+AboutURL – http://www.abouturl.com/
+The Scrutinizer – http://www.scrutinizethis.com/
+net.toolkit – http://clez.net/
+ServerSniff – http://www.serversniff.net/
+Online Microsoft script decoder – http://www.greymagic.com/security/tools/decoder/
+Webmaster-Toolkit – http://www.webmaster-toolkit.com/
+myIPNeighbbors, et al –http://digg.com/security/MyIPNeighbors_Find_Out_Who_Else_is_Hosted_on_Your_Site_s_IP_Address
+PHP charset encoding – http://h4k.in/encoding
+data: URL testcases – http://h4k.in/dataurl
