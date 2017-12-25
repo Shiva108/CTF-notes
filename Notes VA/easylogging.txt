@@ -1,0 +1,14 @@
+tee reads from stdin and writes to stdout and a file, so all the output of your command shows up in your terminal as normal, but it's also logged to a file. Just add "| tee filename" to your command to save the output to a file so you can reference it later.
+e.g. nmap -sS -A --top-ports 1000 target.ip | tee nmap.txt
+I never run an nmap without it. ;)
+
+script is also a lifesaver. It works like it's own shell, but writes all output to a script file. This is great for logging a reverse shell locally. It doesn't just save text output, formatting is also preserved. To make it easier I have this in my .bashrc:
+
+logme () {
+        export SCRIPTFILE="$(date +%s)-${$}"
+        echo "Starting tty logging to ~/scripts/${SCRIPTFILE}..."
+        script -c /bin/bash -q "~/scripts/${SCRIPTFILE}"
+}
+scriptfile () { echo "${SCRIPTFILE}"; }
+
+When I'm about to do something that I want to keep all the details of, I just type logme in my terminal and I'm good to go. Everything that happens in the terminal is saved to the script file. I can run scriptfile to see what file I'm using in the current terminal in case I have multiple scripts running at once. When you're done, you can just cat your script file to replay all the output from your terminal whenever you need it.

