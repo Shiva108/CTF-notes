@@ -1,0 +1,154 @@
+10.10.10.7
+
+nmap -Pn -p- -vv 10.10.10.7 -v -oX beep1.xml 
+
+nmap -Pn -p- -sU -vv 10.10.10.7 -v -oX beep2.xml 
+
+nmap -sS -sV -Pn -A -v 10.10.10.7 -oX beep0.xml
+
+ORT      STATE SERVICE    VERSION
+22/tcp    open  ssh        OpenSSH 4.3 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 ad:ee:5a:bb:69:37:fb:27:af:b8:30:72:a0:f9:6f:53 (DSA)
+|_  2048 bc:c6:73:59:13:a1:8a:4b:55:07:50:f6:65:1d:6d:0d (RSA)
+25/tcp    open  smtp?
+|_smtp-commands: Couldn't establish connection on port 25
+80/tcp    open  http       Apache httpd 2.2.3
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.2.3 (CentOS)
+|_http-title: Did not follow redirect to https://10.10.10.7/
+110/tcp   open  pop3?
+111/tcp   open  rpcbind    2 (RPC #100000)
+| rpcinfo: 
+|   program version   port/proto  service
+|   100000  2            111/tcp  rpcbind
+|   100000  2            111/udp  rpcbind
+|   100024  1            754/udp  status
+|_  100024  1            757/tcp  status
+143/tcp   open  imap?
+443/tcp   open  ssl/https?
+|_ssl-date: 2017-08-24T17:47:32+00:00; -1h18m42s from scanner time.
+993/tcp   open  imaps?
+995/tcp   open  pop3s?
+4445/tcp  open  upnotifyp?
+9090/tcp  open  http       Jetty (Openfire chat server http admin)
+|_hadoop-datanode-info: 
+|_hadoop-jobtracker-info: 
+|_hadoop-tasktracker-info: 
+|_hbase-master-info: 
+| http-cookie-flags: 
+|   /: 
+|     JSESSIONID: 
+|_      httponly flag not set
+|_http-favicon: Unknown favicon MD5: E4888EE8491B4EB75501996E41AF6460
+| http-methods: 
+|   Supported Methods: GET HEAD POST TRACE OPTIONS
+|_  Potentially risky methods: TRACE
+|_http-title: Site doesn't have a title (text/html).
+10000/tcp open  http       MiniServ 1.570 (Webmin httpd)
+|_http-favicon: Unknown favicon MD5: 74F7F6F633A027FA3EA36F05004C9341
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1).
+Aggressive OS guesses: OpenWrt (Linux 2.4.32) (97%), Linksys WRV54G WAP (97%), OpenWrt White Russian 0.9 (Linux 2.4.30) (96%), OpenWrt (Linux 2.4.30 - 2.4.34) (96%), Gemtek P360 WAP or Siemens Gigaset SE515dsl wireless broadband router (96%), Linksys RV042 router (96%), AVM FRITZ!Box FON WLAN 7390 (FritzOS 6.01) (95%), Extreme Networks ExtremeXOS 12.5.1 or 15.3 (95%), Extreme Networks switch (ExtremeXOS 15 - 16) (95%), Android 1.5 (Linux 2.6.27) (95%)
+No exact OS matches for host (test conditions non-ideal).
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 4.3 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 ad:ee:5a:bb:69:37:fb:27:af:b8:30:72:a0:f9:6f:53 (DSA)
+|_  2048 bc:c6:73:59:13:a1:8a:4b:55:07:50:f6:65:1d:6d:0d (RSA)
+25/tcp   open  smtp       Postfix smtpd
+|_smtp-commands: beep.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, ENHANCEDSTATUSCODES, 8BITMIME, DSN, 
+80/tcp   open  http       Apache httpd 2.2.3
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.2.3 (CentOS)
+|_http-title: Did not follow redirect to https://10.10.10.7/
+110/tcp  open  pop3       Cyrus pop3d 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+111/tcp  open  rpcbind    2 (RPC #100000)
+| rpcinfo: 
+|   program version   port/proto  service
+|   100000  2            111/tcp  rpcbind
+|   100000  2            111/udp  rpcbind
+|   100024  1            755/udp  status
+|_  100024  1            758/tcp  status
+143/tcp  open  imap       Cyrus imapd 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+|_imap-capabilities: CAPABILITY
+443/tcp  open  ssl/https?
+|_ssl-date: 2017-08-25T00:33:30+00:00; -1h17m36s from scanner time.
+993/tcp  open  imaps?
+995/tcp  open  pop3s?
+3306/tcp open  mysql      MySQL (unauthorized)
+4445/tcp open  upnotifyp?
+
+Running: Google Android 2.X, Linux 2.6.X, AXIS embedded, ZyXEL embedded
+OS CPE: cpe:/o:google:android:2.2 cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:2.6.17 cpe:/h:axis:210a_network_camera cpe:/h:axis:211_network_camera cpe:/h:zyxel:nsa-210
+OS details: Android 2.2 (Linux 2.6), Linux 2.6.14 - 2.6.34, Linux 2.6.17, Linux 2.6.17 (Mandriva), Linux 2.6.17 - 2.6.36, Linux 2.6.32, AXIS 210A or 211 Network Camera (Linux 2.6.17), ZyXEL NSA-210 NAS device
+
+
+
+
+host        port   proto  name        state   info
+----        ----   -----  ----        -----   ----
+10.10.10.7  22     tcp    ssh         open    OpenSSH 4.3 protocol 2.0
+10.10.10.7  25     tcp    smtp        open    ESMTP Postfix
+10.10.10.7  80     tcp    http        open    Apache httpd 2.2.3
+10.10.10.7  110    tcp    pop3        open    Cyrus POP3 v2.3.7-Invoca server 
+10.10.10.7  111    tcp    rpcbind     open    2 RPC #100000
+10.10.10.7  111    udp    rpcbind     open    2 RPC #100000
+10.10.10.7  123    udp    ntp         open    NTP v4 secondary server
+10.10.10.7  143    tcp    imap        open    Cyrus IMAP4 v2.3.7-Invoca
+10.10.10.7  443    tcp    ssl/https   open    
+10.10.10.7  993    tcp    ssl/imap    open    Cyrus imapd
+10.10.10.7  995    tcp    pop3        open    Cyrus pop3d
+10.10.10.7  3306   tcp    mysql       open    MySQL unauthorized
+10.10.10.7  4190   tcp    sieve       open    Cyrus timsieved 2.3.7-Invoca- w/cyrus imap
+10.10.10.7  4445   tcp    upnotifyp   open    
+10.10.10.7  5038   tcp    asterisk    open    Asterisk Call Manager 1.1
+10.10.10.7	5060   tcp	  sip		  closed
+10.10.10.7  9090   tcp    zeus-admin  closed  
+10.10.10.7  10000  tcp    http        open    MiniServ 1.570 Webmin httpd
+
+
+nmap -Pn -sV -A -pT:5060 -script *vuln* 10.10.10.7 -v -oX beepsV.xml
+
+msf auxiliary(dir_scanner) > run
+
+[*] Detecting error code
+[*] Using code '302' as not found for 10.10.10.7
+
+
+[+] Found http://10.10.10.7:80/cgi-bin/ 302 (10.10.10.7)
+[+] Found http://10.10.10.7:80/error/ 302 (10.10.10.7)
+[+] Found http://10.10.10.7:80/icons/ 200 (10.10.10.7)
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+
+msf auxiliary(ssl) > run
+
+[*] 10.10.10.7:443        - Subject: /C=--/ST=SomeState/L=SomeCity/O=SomeOrganization/OU=SomeOrganizationalUnit/CN=localhost.localdomain/emailAddress=root@localhost.localdomain
+[*] 10.10.10.7:443        - Issuer: /C=--/ST=SomeState/L=SomeCity/O=SomeOrganization/OU=SomeOrganizationalUnit/CN=localhost.localdomain/emailAddress=root@localhost.localdomain
+[*] 10.10.10.7:443        - Signature Alg: sha1WithRSAEncryption
+[*] 10.10.10.7:443        - Public Key Size: 1024 bits
+[*] 10.10.10.7:443        - Not Valid Before: 2017-04-07 08:22:08 UTC
+[*] 10.10.10.7:443        - Not Valid After: 2018-04-07 08:22:08 UTC
+[+] 10.10.10.7:443        - Certificate contains no CA Issuers extension... possible self signed certificate
+[+] 10.10.10.7:443        - Certificate Subject and Issuer match... possible self signed certificate
+[*] 10.10.10.7:443        - WARNING: Public Key only 1024 bits
+[*] 10.10.10.7:443        - Has common name localhost.localdomain
+[*] 10.10.10.7:443        - Scanned 1 of 1 hosts (100% complete)
+
+nikto -h http://10.10.10.7/ -o beep__nikto.xml -port 80 -C all -Format xml
++ Root page / redirects to: https://10.10.10.7/
++ Apache/2.2.3 appears to be outdated (current is at least Apache/2.4.12). Apache 2.0.65 (final release) and 2.2.29 are also current.
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
+
+
+Adapt scan+exploit to SSL
+
+
+
+
+

