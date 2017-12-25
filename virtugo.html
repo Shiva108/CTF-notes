@@ -1,0 +1,549 @@
+  <h1>VirtuGo</h1>
+
+  Apache Tomcat/8.0.33
+
+  Admin Web Portal – Thor + Israel Team - 13/11
+
+  Admin Portal, Application URL:
+  https://ppbe.solverminds.net/tivoli/admin/
+
+  Our testing method is based on OWASP :
+  https://www.owasp.org/index.php/OWASP_Testing_Guide_v4_Table_of_Contents
+
+
+  1.      Information Gathering
+  2.      Run Automation Scanners
+  3.      Configuration and Deployment Management Testing
+  4.      Identity Management Testing
+  5.      Authentication Testing
+  6.      Authorization Testing
+  7.      Input Validation Testing
+  8.      Testing for Error Handling
+  9.      Business Logic Testing
+  10.     Client Side Testing
+  11.     Final Report
+
+  https://www.owasp.org/index.php/Testing_Checklist
+  https://www.owasp.org/index.php/Web_Application_Security_Testing_Cheat_Sheet
+
+<h2>Information Gathering</h2>
+
+  <h3>4.2 		Information Gathering</h3>
+    4.2.1 	OTG-INFO-001 	Conduct Search Engine Discovery and Reconnaissance for Information Leakage
+      No leakage or info found for https://ppbe.solverminds.net/tivoli/admin/ or https://ppbe.solverminds.net/
+      with use of metacrawler or dogpile. This is to be expected for demo site.
+
+    4.2.2 	OTG-INFO-002 	Fingerprint Web Server
+
+      Hosts
+      =====
+      address        mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+      -------        ---  ----  -------  ---------  -----  -------  ----  --------
+      103.228.19.70             Windows                    device
+
+      Services
+      ========
+
+      host           port  proto  name              state   info
+      ----           ----  -----  ----              -----   ----
+      103.228.19.70  21    tcp    tcpwrapped        open
+      103.228.19.70  80    tcp    http              open    Apache Tomcat/Coyote JSP engine 1.1
+      103.228.19.70  443   tcp    ssl/https         open    Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+      103.228.19.70  554   tcp    rtsp              open
+      103.228.19.70  1723  tcp    pptp              closed
+      103.228.19.70  8080  tcp    tcpwrapped        open
+      103.228.19.70  8090  tcp    ssl/opsmessaging  open
+      103.228.19.70  9000  tcp    http              open    Apache httpd 2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+
+      Netcraft:
+        Site 	https://ppbe.solverminds.net
+        Netblock Owner: 	Solverminds and solutions Technologies Pvt Ltd
+        Domain 	solverminds.net
+        Nameserver 	ns67.domaincontrol.com
+        IP address 	103.228.19.70
+        DNS admin 	dns@jomax.net
+        Hosting company 	darktech.org
+        Hosting country 	 IN
+        <> SSLv3/POODLE: This site supports the SSL version 3 protocol.
+          http://news.netcraft.com/archives/2014/10/15/googles-poodle-affects-oodles.html
+        Assurance 	Domain validation
+        Common name 	*.solverminds.net
+        Domain Control Validated 	Subject Alternative Name 	*.solverminds.net, solverminds.net
+        Validity period 	From Jun 28 2017 to Jun 17 2018 (11 months, 2 weeks, 5 days) 	Matches hostname 	Yes
+        Server 	Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+        Public key algorithm 	rsaEncryption
+        Protocol version 	TLSv1 	Public key length 	2048
+        Certificate check 	ok
+        Signature algorithm 	sha256WithRSAEncryption
+        Serial number 	0x059151eefeafab13 	Cipher 	DHE-RSA-AES128-SHA
+        Version number 	0x02
+        Perfect Forward Secrecy 	Yes
+        Supported TLS Extensions 	RFC4366 server name, RFC5746 renegotiation info, RFC5077 session ticket
+        Issuing organisation 	GoDaddy.com, Inc.
+        Issuer unit 	http://certs.godaddy.com/repository/
+        Issuer location 	Scottsdale     Issuer country 	US 	Issuer state 	Arizona
+        Certificate Revocation Lists 	http://crl.godaddy.com/gdig2s1-575.crl (revoked on 2017-07-02 04:09:33)
+	      Certificate Hash 	NGb22YQUAQtauQrVLi2LRNg2RQE
+        Public Key Hash 	77d9dc19eba47b177423bb71fa7502563c1506a8ed9473bd4c94b6c5ee16176c
+        Current certificate revocation
+        The current certificate for this site has been revoked by a CRL:
+        Google Chrome CRLSet 	not revoked
+        http://crl.godaddy.com/gdig2s1-575.crl 	2017-07-02 04:09:33
+        Revocation information last updated 2017-11-01 18:00 GMT.
+
+        Banner grab:
+        http 103.228.19.70
+          HTTP/1.1 200 OK
+          Accept-Ranges: bytes
+          Content-Encoding: gzip
+          Content-Type: text/html
+          Date: Thu, 02 Nov 2017 14:54:52 GMT
+          ETag: W/"1190-1496037592430"
+          Last-Modified: Mon, 29 May 2017 05:59:52 GMT
+          Server: Apache-Coyote/1.1
+          Transfer-Encoding: chunked
+          Vary: Accept-Encoding
+
+      Whatweb
+        Apache[2.2.25][mod_jk/1.2.23,mod_ssl/2.2.25],
+        HTTPServer[Windows (32 bit)][Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23],
+        OpenSSL[0.9.8y],
+        Script[text/javascript],
+        Title[VirtuGO]
+
+      Nikto
+        + Target IP:          103.228.19.70
+        + Target Hostname:    ppbe.solverminds.net
+        + Target Port:        443
+        + Start Time:         2017-11-02 15:59:39 (GMT1)
+        ---------------------------------------------------------------------------
+        + Server: Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+        + Retrieved via header: HTTP/1.1 sophos.http.proxy:3128
+        + The anti-clickjacking X-Frame-Options header is not present.
+        + The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+        + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+        + mod_jk/1.2.23 appears to be outdated (current is at least 1.2.40)
+        + Apache/2.2.25 appears to be outdated (current is at least Apache/2.4.12). Apache 2.0.65 (final release) and 2.2.29 are also current.
+        + mod_ssl/2.2.25 appears to be outdated (current is at least 2.8.31) (may depend on server version)
+        + OpenSSL/0.9.8y appears to be outdated (current is at least 1.0.1j). OpenSSL 1.0.0o and 0.9.8zc are also current.
+        + mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell.
+          http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0082, OSVDB-756.
+
+
+    4.2.3 	OTG-INFO-003 	Review Webserver Metafiles for Information Leakage
+
+      No robots.txt or similiar found.
+      Dirb found now additional directories.
+
+      DIRB v2.22
+        START_TIME: Thu Nov  2 19:00:57 2017
+        URL_BASE: https://ppbe.solverminds.net/admin/
+        WORDLIST_FILES: /usr/share/wordlists/dirb/big.txt
+        GENERATED WORDS: 20458
+        ---- Scanning URL: https://ppbe.solverminds.net/admin/ ----
+
+      No meta tag in header.
+      [See html header]
+
+      ../admin/assets should be protected from crawlers/spiders.
+
+    4.2.4 	OTG-INFO-004 	Enumerate Applications on Webserver
+
+      Hosts
+      =====
+      address        mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+      -------        ---  ----  -------  ---------  -----  -------  ----  --------
+      103.228.19.70             Windows                    device
+
+      Services
+      ========
+      host           port  proto  name              state     info
+      ----           ----  -----  ----              -----     ----
+      103.228.19.70  21    tcp    tcpwrapped        open
+      103.228.19.70  80    tcp    http              open      Apache Tomcat/Coyote JSP engine 1.1
+      103.228.19.70  135   udp    msrpc             filtered
+      103.228.19.70  136   udp    profile           filtered
+      103.228.19.70  137   udp    netbios-ns        filtered
+      103.228.19.70  138   udp    netbios-dgm       filtered
+      103.228.19.70  139   udp    netbios-ssn       filtered
+      103.228.19.70  443   tcp    ssl/https         open      Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+      103.228.19.70  445   udp    microsoft-ds      filtered
+      103.228.19.70  554   tcp    rtsp              open
+      103.228.19.70  1723  tcp    pptp              closed
+      103.228.19.70  8080  tcp    tcpwrapped        open
+      103.228.19.70  8090  tcp    ssl/opsmessaging  open
+      103.228.19.70  9000  tcp    http              open      Apache httpd 2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23
+
+      Port 21:
+        ftp://103.228.19.70:21 - The connection was reset
+      Port 80:
+        http://ppbe.solverminds.net/
+      Port 443:
+        https://ppbe.solverminds.net/
+      Port 8080:
+        https://103.228.19.70:8080/ - Secure Connection Failed
+        Telnet: Connection closed by foreign host.
+        nc: Connection to 103.228.19.70 8090 port [tcp/*] succeeded!
+          <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+          <html><head>
+          <title>403 Forbidden</title>
+          </head><body>
+          <h1>Forbidden</h1>
+          <p>You don't have permission to access /
+          on this server.</p>
+          </body></html>
+
+      Port 8090:
+        https://103.228.19.70:8090/ - Secure Connection Failed
+          Telnet: Connection closed by foreign host.
+      Port 9000:
+        https://103.228.19.70:9000/ - timeout
+        Telnet: Connection closed by foreign host.
+
+    4.2.5 	OTG-INFO-005 	Review Webpage Comments and Metadata for Information Leakage
+      Read files:
+      https://ppbe.solverminds.net/tivoli/admin
+      https://ppbe.solverminds.net/tivoli/admin/favicon.svg
+      https://ppbe.solverminds.net/tivoli/admin/inline.de75dcd4657a4a04a869.bundle.js
+      https://ppbe.solverminds.net/tivoli/admin/main.2f8434e27ab6b4b1b418.bundle.js
+      https://ppbe.solverminds.net/tivoli/admin/main.2f8434e27ab6b4b1b418.bundle.js
+        loginusername="admin",this.loginpassword="Pu1s3P1@n3t2021"
+
+      No webpage comments or Metadata information leakage, however js seems to have
+      store old admin password!
+
+    4.2.6 	OTG-INFO-006 	Identify application entry points
+      GET requests:
+      https://ppbe.solverminds.net/tivoli/admin/
+      https://ppbe.solverminds.net/tivoli/admin/assets/
+      https://ppbe.solverminds.net/tivoli/admin/assets/data.json
+      https://ppbe.solverminds.net/tivoli/admin/assets/i18n/
+      https://ppbe.solverminds.net/tivoli/admin/assets/i18n/en1.json
+      https://ppbe.solverminds.net/tivoli/admin/assets/i18n/English.json
+      https://ppbe.solverminds.net/tivoli/admin/assets/i18n/fr1.json
+      https://ppbe.solverminds.net/tivoli/admin/assets/i18n/French.json
+      https://ppbe.solverminds.net/tivoli/admin/assets/images/
+      https://ppbe.solverminds.net/tivoli/admin/assets/images/vGO.svg
+      https://ppbe.solverminds.net/tivoli/admin/assets/Template_TrainingSession.xlsx
+      https://ppbe.solverminds.net/tivoli/admin/inline.de75dcd4657a4a04a869.bundle.js
+      https://ppbe.solverminds.net/tivoli/admin/main.2f8434e27ab6b4b1b418.bundle.js
+      https://ppbe.solverminds.net/tivoli/admin/scripts.744d60f8c3e34db17c97.bundle.js
+      No post requests.
+
+      Responses, to note:
+        https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js
+      No cookies, sessions or otherwise revealed.
+
+    4.2.7 	OTG-INFO-007 	Map execution paths through application
+      [Insert ZAP ]
+
+    4.2.8 	OTG-INFO-008 	Fingerprint Web Application Framework
+      No header information, no cookies, file extensions or similar
+      Whatweb
+        Apache[2.2.25][mod_jk/1.2.23,mod_ssl/2.2.25],
+        HTTPServer[Windows (32 bit)][Apache/2.2.25 (Win32) mod_ssl/2.2.25 OpenSSL/0.9.8y mod_jk/1.2.23],
+        OpenSSL[0.9.8y],
+        Script[text/javascript],
+        Title[VirtuGO]
+
+    4.2.9 	OTG-INFO-009 	Fingerprint Web Application
+      JavaScript Framework
+        Modernizr
+        Moment.js
+        jQuery
+      Font Script
+        Google Font API
+      Web Server
+        Apache 2.2.25
+        Apache Tomcat
+      JavaScript Graphics
+        amCharts
+      Programming Language
+        Java
+      Operating System
+        Windows Server
+      Web Server Extension
+        OpenSSL 0.9.8y
+        mod_jk 1.2.23
+        mod_ssl 2.2.25
+      Build/CI System
+        webpack
+
+    <h3>4.3 Testing for Configuration and Deployment management</h3>
+
+      4.3.1 Test Network/Infrastructure Configuration (OTG-CONFIG-001)
+        Known Server Vulnerabilities
+          Apache mod_ssl 2.8.x - Off-by-One HTAccess Buffer Overflow
+            > Exotic [Insert http://www.securityfocus.com/bid/5084/info]
+          Apache mod_ssl < 2.8.7 OpenSSL - 'OpenFuck.c' Remote Exploit
+          Apache mod_ssl < 2.8.7 OpenSSL - 'OpenFuckV2.c' Remote Exploit
+            > Both linux only
+          Apache Tomcat < 9.0.1 (Beta) / < 8.5.23 / < 8.0.47 / < 7.0.8 - JSP Upload Bypass / Remote Code Execution (1)
+          Apache Tomcat < 9.0.1 (Beta) / < 8.5.23 / < 8.0.47 / < 7.0.8 - JSP Upload Bypass / Remote Code Execution (2)
+            > Not Vulnerable to CVE-2017-12617
+
+        Administrative tools
+          No open tools.input
+
+      4.3.2 Test Application Platform Configuration (OTG-CONFIG-002)
+
+        Blackbox testing:
+        The following default files were found (by nessus):
+
+          /examples/servlets/index.html
+          /examples/jsp/snp/snoop.jsp
+          /examples/jsp/index.html
+
+          "Example JSPs and Servlets are installed in the remote Apache Tomcat servlet / JSP container.
+          These files should be removed as they may help an attacker uncover information about the remote
+          Tomcat install or host itself. The example files may also contain vulnerabilities such as
+          cross-site scripting vulnerabilities."
+
+          [See full list of web server links in VGOweblinks.html]
+
+        Greybox:
+          Will follow
+
+      4.3.3 Test File Extensions Handling for Sensitive Information (OTG-CONFIG-003)
+
+        Found none of the following filetypes:
+        .asa
+        .inc
+        .ip, .tar, .gz, .tgz, .rar, ...: (Compressed) archive files
+        .java: No reason to provide access to Java source files
+        .txt: Text files
+        .pdf: PDF documents
+        .doc, .rtf, .ppt, ...: Office documents
+        .bak, .old and other extensions indicative of backup files (for example: ~ for Emacs backup files
+
+        Found one excel file:
+          https://ppbe.solverminds.net/tivoli/admin/assets/Template_TrainingSession.xlsx
+
+      4.3.4 Review Old, Backup and Unreferenced Files for Sensitive Information (OTG-CONFIG-004)
+
+        None found.
+
+      4.3.5 Enumerate Infrastructure and Application Admin Interfaces (OTG-CONFIG-00x5)
+
+        /tools/admin
+
+      4.3.6 Test HTTP Methods (OTG-CONFIG-006)
+
+        Dirbuster:
+        https://ppbe.solverminds.net/tivoli/admin/
+        https://ppbe.solverminds.net/tivoli/admin/assets/
+        https://ppbe.solverminds.net/tivoli/admin/assets/data.json
+        https://ppbe.solverminds.net/tivoli/admin/assets/i18n/
+        https://ppbe.solverminds.net/tivoli/admin/assets/i18n/en1.json
+        https://ppbe.solverminds.net/tivoli/admin/assets/i18n/English.json
+        https://ppbe.solverminds.net/tivoli/admin/assets/i18n/fr1.json
+        https://ppbe.solverminds.net/tivoli/admin/assets/i18n/French.json
+        https://ppbe.solverminds.net/tivoli/admin/assets/images/
+        https://ppbe.solverminds.net/tivoli/admin/assets/images/vGO.svg
+        https://ppbe.solverminds.net/tivoli/admin/assets/Template_TrainingSession.xlsx
+        https://ppbe.solverminds.net/tivoli/admin/inline.de75dcd4657a4a04a869.bundle.js
+        https://ppbe.solverminds.net/tivoli/admin/main.2f8434e27ab6b4b1b418.bundle.js
+        https://ppbe.solverminds.net/tivoli/admin/scripts.744d60f8c3e34db17c97.bundle.js
+
+      4.3.7 Test HTTP Strict Transport Security (OTG-CONFIG-007)
+        The remote HTTPS server is not enforcing HTTP Strict Transport Security (HSTS). The lack of HSTS allows
+        downgrade attacks, SSL-stripping man-in-the-middle attacks, and weakens cookie-hijacking protections.
+
+      4.3.8 Test RIA cross domain policy (OTG-CONFIG-008)
+        Neither crossdomain.xml or clientaccesspolicy.xml found.
+
+      4.4 Identity Management
+        Admin portal uses only 1 role ie. admin. It was not possible to test user registration process. However,
+        no user should be named "admin" as it is likely first username an intruder will attempt to bruteforce.
+        Either no or weak username policy is in place. Admin portal does not have guests or traning acounts.
+
+    4.5 Authentication Testing
+
+      4.5.1 Testing for Credentials Transported over an Encrypted Channel (OTG-AUTHN-001)
+        Admin portal does enforce using HTTPS while sending credentials. However, "GET" method is used instead of
+        "POST" method: GET /ppbe/api/authentication/getauthentication?username=admin&password=Pu1s3P1@n3t2021&Authorization=Basicc2F0aGVlc2g6VGVzdCFzYWw0c2FuNFgh
+        HTTPS is used, "nevertheless as stated before, it is not a good practice to use the GET method to send sensitive data to a web application,
+        because the information contained in the URL can be stored in many locations such as proxy and web server logs.
+
+      4.5.2 Testing for default credentials (OTG-AUTHN-002)
+        Default credential testing with Burp/Intruder module passed.
+        However ADMIN should not be a user name.
+
+      4.5.3 Testing for Weak lock out mechanism (OTG-AUTHN-003)
+        Dictionary attack performed without any lock out.
+        No captcha in place ie extremely easy to attempt bruteforce.
+
+      4.5.4 Testing for bypassing authentication schema (OTG-AUTHN-004)
+        Bypassing the authentication schema was not possible.
+
+      4.5.5 Test remember password functionality (OTG-AUTHN-005)
+        Application does not save password in cookie or otherwise
+
+      4.5.6 Testing for Browser cache weakness (OTG-AUTHN-006)
+        No critical information is saved in browser cache.
+
+      4.5.7 Testing for Weak password policy (OTG-AUTHN-007)
+        Both bruteforce and dictionary attack attempted. Besides that no comments about policy can be give time.
+
+      4.5.8 Testing for Weak security question/answer (OTG-AUTHN-008)
+        Application does not use security question oranswers.
+
+      4.5.9 Testing for weak password change or reset functionalities (OTG-AUTHN-009)
+        "Change Password" functionality on admin page does not work and was therefore not tested.
+
+      4.5.10 Testing for Weaker authentication in alternative channel (OTG-AUTHN-010)
+        Not tested.
+
+    4.6 Authorization Testing
+
+      4.6.1 Testing Directory traversal/file include (OTG-AUTHZ-001)
+        Tested with Nikto and Dirbuster. Directory traversel is not possible
+
+      4.6.2 Testing for bypassing authorization schema (OTG-AUTHZ-002)
+        Not tested. Only admin account is used for admin portal.
+
+
+      4.6.3 Testing for Privilege Escalation (OTG-AUTHZ-003)
+        Not tested. Only admin account is used for admin portal.
+
+      4.6.4 Testing for Insecure Direct Object References (OTG-AUTHZ-004)
+        Applicatoin not vulnerable.
+
+    4.7 Session Management Testing
+
+      4.7.1 Testing for Bypassing Session Management Schema (OTG-SESS-001)
+        N/A
+
+      4.7.2 Testing for Cookies attributes (OTG-SESS-002)
+        The APP does not use cookies.
+
+      4.7.3 Testing for Session Fixation (OTG-SESS-003)
+        N/A
+
+      4.7.4 Testing for Exposed Session Variables (OTG-SESS-004)
+        No exposed session variables found.
+
+      4.7.5 Testing for Cross Site Request Forgery (CSRF) (OTG-SESS-005)
+        No CRSF vulnerability found.
+
+      4.7.6 Testing for logout functionality (OTG-SESS-006)
+        Logout logs out all pages and no information is left behind.
+
+      4.7.7 Test Session Timeout (OTG-SESS-007)
+        Session times out automatically.
+
+      4.7.8 Testing for Session puzzling (OTG-SESS-008)
+        Session puzzle on possible in VGO applicaton.
+
+    4.8 Input Validation Testing
+
+      4.8.1 Testing for Reflected Cross Site Scripting (OTG-INPVAL-001)
+        Reflected XXS not possible.
+
+      4.8.2 Testing for Stored Cross Site Scripting (OTG-INPVAL-002)
+        Stored XSS not possible
+
+      4.8.3 Testing for HTTP Verb Tampering (OTG-INPVAL-003)
+
+
+      4.8.4 Testing for HTTP Parameter pollution (OTG-INPVAL-004)
+
+      4.8.5 Testing for SQL Injection (OTG-INPVAL-005)
+        Tested with SQLMAP and others. NO SQLI possible.
+
+      4.8.5.2 MySQL Testing
+
+
+      4.8.5.3 SQL Server Testing
+        No vulnerable.
+
+      4.8.5.6 Testing for NoSQL injection
+        N/A
+
+      4.8.12 Testing for Code Injection (OTG-INPVAL-012)
+        No vulnerable.
+
+      4.8.12.1 Testing for Local File Inclusion
+        Not vulnerable
+
+      4.8.12.2 Testing for Remote File Inclusion
+        Not vulnerable
+
+      4.8.13 Testing for Command Injection (OTG-INPVAL-013)
+        Not vulnerable
+
+      4.8.15 Testing for incubated vulnerabilities (OTG-INPVAL-015)
+        Not vulnerable
+
+      4.8.16 Testing for HTTP Splitting/Smuggling (OTG-INPVAL-016)
+        Not vulnerable
+
+      4.8.17 Testing for HTTP Incoming Requests (OTG-INPVAL-017)
+        Not vulnerable
+
+    4.9 Testing for Error Handling
+
+      4.9.1 Analysis of Error Codes (OTG-ERR-001)
+        No error codes was found visible.
+
+      4.9.2 Analysis of Stack Traces (OTG-ERR-002)
+        Not tested.
+
+    4.10 Testing for weak Cryptography
+
+      4.10.1 Testing for Weak SSL/TLS Ciphers, Insufficient Transport Layer Protection (OTG-CRYPST-001)
+        
+
+      4.10.2 Testing for Padding Oracle (OTG-CRYPST-002)
+
+      4.10.3 Testing for Sensitive information sent via unencrypted channels (OTG-CRYPST-003)
+
+      4.10.4 Testing for Weak Encryption (OTG-CRYPST-004)
+
+
+    4.11 Business Logic Testing
+
+      4.11.1 Test Business Logic Data Validation (OTG-BUSLOGIC-001)
+
+      4.11.2 Test Ability to Forge Requests (OTG-BUSLOGIC-002)
+
+      4.11.3 Test Integrity Checks (OTG-BUSLOGIC-003)
+
+      4.11.4 Test for Process Timing (OTG-BUSLOGIC-004)
+
+      4.11.5 Test Number of Times a Function Can be Used Limits (OTG-BUSLOGIC-005)
+
+      4.11.6 Testing for the Circumvention of Work Flows (OTG-BUSLOGIC-006)
+
+      4.11.7 Test Defenses Against Application Mis-use (OTG-BUSLOGIC-007)
+
+      4.11.8 Test Upload of Unexpected File Types (OTG-BUSLOGIC-008)
+
+      4.11.9 Test Upload of Malicious Files (OTG-BUSLOGIC-009)
+
+
+    4.12 Client Side Testing
+
+      4.12.1 Testing for DOM based Cross Site Scripting (OTG-CLIENT-001)
+
+      4.12.2 Testing for JavaScript Execution (OTG-CLIENT-002)
+
+      4.12.3 Testing for HTML Injection (OTG-CLIENT-003)
+
+      4.12.4 Testing for Client Side URL Redirect (OTG-CLIENT-004)
+
+      4.12.5 Testing for CSS Injection (OTG-CLIENT-005)
+
+      4.12.6 Testing for Client Side Resource Manipulation (OTG-CLIENT-006)
+
+      4.12.7 Test Cross Origin Resource Sharing (OTG-CLIENT-007)
+
+      4.12.8 Testing for Cross Site Flashing (OTG-CLIENT-008)
+
+      4.12.9 Testing for Clickjacking (OTG-CLIENT-009)
+
+      4.12.10 Testing WebSockets (OTG-CLIENT-010)
+
+      4.12.11 Test Web Messaging (OTG-CLIENT-011)
+
+      4.12.12 Test Local Storage (OTG-CLIENT-012)
