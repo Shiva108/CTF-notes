@@ -1,0 +1,10 @@
+All tools listing ->
+http://tools.kali.org/tools-listing
+
+Password cracking tool -> Patator ->
+http://tools.kali.org/password-attacks/patator
+
+
+Gobuster ->
+http://tools.kali.org/web-applications/gobuster
+

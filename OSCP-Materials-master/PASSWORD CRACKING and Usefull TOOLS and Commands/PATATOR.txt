@@ -1,0 +1,170 @@
+PATATOR -> Patator is NOT script-kiddie friendly, please read the README inside patator.py before reporting
+
+Patator is incredibly powerful
+
+
+
+
+
+url                : main url to target (scheme://host[:port]/path?query)
+
+body               : body data
+
+header             : use custom headers
+
+method             : method to use [GET | POST | HEAD | ...]
+
+follow             : follow any Location redirect [0|1]
+
+accept_cookie      : save received cookies to issue them in future requests [0|1]
+
+http_proxy         : HTTP proxy to use (host:port)
+
+timeout            : seconds to wait for a HTTP response [20]
+
+--rate-limit=N     : wait N seconds between tests (default is 0)
+
+-t N, --threads=N  : number of threads (default is 10)
+
+-x arg             : actions and conditions, see Syntax below
+
+actions            := action[,action]*
+
+action             := "ignore" | "retry" | "free" | "quit" | "reset"
+
+conditions         := condition=value[,condition=value]*
+
+condition          := "code" | "size" | "mesg" | "fgrep" | "egrep" | 
+"clen"
+
+ignore             : do not report
+
+quit               : terminate execution now
+
+code               : match status code
+
+size               : match size (N or N-M or N- or -N)
+
+mesg               : match message
+
+fgrep              : search for string
+
+
+examples --->
+
+patator  http_fuzz  method=GET \
+  url="http://192.168.1.44/DVWA/vulnerabilities/brute/?username=admin&password=FILE0&Login=Login" \
+  0=/root/password.txt \
+  header="Cookie: security=low; PHPSESSID=${SESSIONID}" \
+  http_proxy=127.0.0.1:8080 \
+  --threads=1  timeout=5  --rate-limit=1 \
+  -x ignore:fgrep='Username and/or password incorrect.'  -x quit:fgrep!='Username and/or password incorrect.',clen!='-1'
+
+
+
+
+
+patator - 
+	the main program itself
+
+http_fuzz - 
+	the module to use for the method of the attack
+
+
+method=GET - 
+	how to send the request
+
+url="http://192.168.1.44/DVWA/vulnerabilities/brute/?username=admin&password=FILE0&Login=Login" -> 
+	
+	the full URL and how to use the wordlist
+
+
+0=/root/password.txt - 
+
+	defining the file for "wordlist 0" (aka password wordlist)
+
+
+header="Cookie: security=low; PHPSESSID=${SESSIONID}" - 
+
+	the cookie information to send.
+
+
+http_proxy=127.0.0.1:8080 - 
+
+	instructs Patator to use a proxy.
+
+
+--threads=1 - 
+
+	single thread
+
+
+timeout=5 - 
+	
+	timeout value of 5 seconds
+
+
+--rate-limit=1 - 
+
+	wait 1 second before going on to the next thread
+
+
+-x ignore:fgrep='Username and/or password incorrect.' - 
+
+	If it matches, do not display out. All Failed logins will contain this string (aka blacklisting)
+
+-x quit:fgrep!='Username and/or password incorrect.' - 
+
+	If it does not match this string on the page, quit.
+		If we wanted to use the page length instead: 
+		   -x ignore:clen=4945.
+
+
+,clen!='-1' - 
+
+	this extends the conditions required quit (AND operator). The page response length cannot be -1 (aka the page timed out).
+
+
+Unlike Hydra, Patator does NOT say "successfully logged into host: 192.168.1.44, login: admin, password: password". It is up to US to define the information we want shown (or not wanted). Patator will also keep on just "going through" the wordlist(s) until it reaches the end (again, it is up to us to define a breaking point). With this in mind, this is what we have done:
+
+
+
+-x ignore:fgrep='Username... - 
+	means "do not display anything which matches this" (due to bad login)
+
+
+-x quit:fgrep!='Username... - 
+	means "quit the attack if the page does not match" (due to successful login)
+
+		As this is a password single user brute force, it does not make too much sense to keep going as a user only has one password (normally?)
+	
+		This enforces why it is a fuzzer, rather than a password brute force tool (and a reason why it is harder to use).
+
+
+,clen!='-1' - 
+	and extend the quit condition so the content length cannot equal -1 (which is the value for pages that timeout).
+
+
+
+To match the brute force attempt of Hydra, where it was displaying the values tried, -x ignore:fgrep='Username and/or password incorrect.' was not used. You can see what the correct value was to login (password), based on the "page size:content length" reported back (5276:5007), The first value is also different due to the extra line added in from DVWA core, which was noted when we did the baseline responses.
+
+
+
+
+IF MULTIPLE USERS --->
+
+patator  http_fuzz  method=GET \
+  url="http://192.168.1.44/DVWA/vulnerabilities/brute/?username=FILE1&password=FILE0&Login=Login" \
+  1=/root/users.txt  0=/usr/share/seclists/Passwords/rockyou-40.txt \
+  header="Cookie: security=low; PHPSESSID=${SESSIONID}" \
+  follow=0  accept_cookie=0 \
+  --threads=10  timeout=20 \
+  -x ignore:fgrep!='Welcome to the password protected area'
+
+
+
+
+
+Reference ->
+
+https://blog.g0tmi1k.com/dvwa/bruteforce-low/

