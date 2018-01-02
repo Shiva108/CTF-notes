@@ -145,6 +145,3 @@ pi@raspberrypi:/media/usbstick $ strings /dev/sdb
   sudo su
 
 
-
-user.txt ff837707441b257a20e32199d7c8838d
-root.txt
