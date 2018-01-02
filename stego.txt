@@ -1,8 +1,0 @@
-Stego / Image stego
-    steghide
-    imagemagics
-    exiftool
-    Kali
-      binwalk
-      strings
-      hexdump
