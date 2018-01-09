@@ -1,0 +1,23 @@
+<h1>Jeeves 10.10.10.63</h1>
+
+<h2>NMAP</h2>
+  PORT      STATE SERVICE      VERSION
+  80/tcp    open  http         Microsoft IIS httpd 10.0
+  |_http-server-header: Microsoft-IIS/10.0
+  | vulners:
+  |   cpe:/a:microsoft:iis:10.0:
+  |_	MSF:EXPLOIT/WINDOWS/BROWSER/PCVUE_FUNC		5.8		https://vulners.com/metasploit/MSF:EXPLOIT/WINDOWS/BROWSER/PCVUE_FUNC		*EXPLOIT*
+  135/tcp   open  msrpc        Microsoft Windows RPC
+  445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+  50000/tcp open  http         Jetty 9.4.z-SNAPSHOT
+  |_http-server-header: Jetty(9.4.z-SNAPSHOT)
+  Service Info: Host: JEEVES; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+  host         port   proto  name          state  info
+  ----         ----   -----  ----          -----  ----
+  10.10.10.63  80     tcp    http          open   Microsoft IIS httpd 10.0
+  10.10.10.63  135    tcp    msrpc         open   Microsoft Windows RPC
+  10.10.10.63  445    tcp    microsoft-ds  open   Microsoft Windows 7 - 10 microsoft-ds workgroup: WORKGROUP
+  10.10.10.63  50000  tcp    http          open   Jetty 9.4.z-SNAPSHOT
+
+<h2>Nikto</h2>

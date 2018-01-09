@@ -136,12 +136,10 @@ pi@raspberrypi:/media/usbstick $ strings /dev/sdb
   root.txt
   damnit.txt
   >r &
-  3d3e483143ff12ec505d026fa13e020b
+  xxxxx83143ff12ec505d026fa13e020
   Damnit! Sorry man I accidentally deleted your files off the USB stick.
   Do you know if there is any way to get them back?
   -James
 
 
   sudo su
-
-
