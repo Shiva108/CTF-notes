@@ -110,7 +110,7 @@ Spoilers
       pass: P@55W0rd1!2@
 
 user.txt
-914d0a4ebc177889b5b89a23f556fd75
+*** CENSORED ***
 
 <h2>Linux priv esc</h2>
 
@@ -129,7 +129,7 @@ user.txt
 
     WAIT!
 
-    Root: b4c9723a28899b1c45db281d99cc87c9
+    Root: *** CENSORED ***
 
 
 <h2> **** NOT USED **** </h2>
