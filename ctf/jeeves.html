@@ -21,3 +21,29 @@
   10.10.10.63  50000  tcp    http          open   Jetty 9.4.z-SNAPSHOT
 
 <h2>Nikto</h2>
+  - Nikto v2.1.6
+  ---------------------------------------------------------------------------
+  + Target IP:          10.10.10.63
+  + Target Hostname:    10.10.10.63
+  + Target Port:        80
+  + Start Time:         2018-01-01 21:32:46 (GMT1)
+  ---------------------------------------------------------------------------
+  + Server: Microsoft-IIS/10.0
+  + The anti-clickjacking X-Frame-Options header is not present.
+  + The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+  + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+  + Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST
+  + Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST
+  + 26129 requests: 0 error(s) and 5 item(s) reported on remote host
+  + End Time:           2018-01-01 21:59:29 (GMT1) (1603 seconds)
+  ---------------------------------------------------------------------------
+
+  - Nikto v2.1.6
+  ---------------------------------------------------------------------------
+  + Target IP:          10.10.10.63
+  + Target Hostname:    10.10.10.63
+  + Target Port:        50000
+  + Start Time:         2018-01-01 22:06:46 (GMT1)
+  ---------------------------------------------------------------------------
+  + Server: Jetty(9.4.z-SNAPSHOT)
+  + The anti-clickjacking X-Frame-Options header is not present.

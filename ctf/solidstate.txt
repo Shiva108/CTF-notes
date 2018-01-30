@@ -110,7 +110,7 @@ Spoilers
       pass: P@55W0rd1!2@
 
 user.txt
-*** CENSORED ***
+  *** CENSORED ***
 
 <h2>Linux priv esc</h2>
 
