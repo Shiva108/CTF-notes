@@ -9,11 +9,13 @@
 
   Fast:
 
+  nmap -v3 -sT --min-rate=1000 -p0- <ip> -oA name
+
   nmap -sS -sV -Pn -A -v <ip> -oX name.xml
 
 <h2> 2: Nmap version and vulnerability Scan:</h2>
 
-  Nmap -Pn -sV -O -pT:{TCP ports found in step 1},U:{UDP ports found in step 1} -script *vuln* <ip address>
+  nmap -Pn -sV -O -pT:{TCP ports found in step 1},U:{UDP ports found in step 1} -script *vuln* <ip address>
 
 Grab banners manually for more clarity:
 

