@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Assembly</title>
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Asap|Gloria+Hallelujah|Roboto|VT323" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>Reverse Engineering<br>Assembly to C</h1>
+        <h2 class="subtitle"> -- Exercises for n00bs</h2>
+        <p class="introduction-text">
+            If you would like to learn reverse engineering you should check out <a href="http://opensecuritytraining.info/IntroX86.html">OpenSecurityTraining.info</a>. I did the course and it was just awesome. But I felt that I wanted to do some more basic exercises before moving on. I am a firm believer in the power of repetition. I wanted to be able to fast and easy look at assembly and understand what it does. The problem was that when I wrote the code myself I could not reverse it, since I knew it. So instead I compiled so many programs that I couldn't possibily remember them all, and then I created this nice little random-button that gives me random assembly code to reverse. Try it out if you like!
+        </p>
+        <button type="button" name="random" class="random random-button">Give me a random code snippet!</button>
+    </header>
+    <div class="insert_random">
+    </div>
+
+    <div class="example1 exercise_section">
+        <h2>Exercise 1</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+        <pre class="assem1">
+            00D21000  push        ebp
+            00D21001  mov         ebp,esp
+            00D21003  sub         esp,10h
+            00D21006  mov         dword ptr [ebp-4],3E7h
+            00D2100D  mov         dword ptr [ebp-8],3
+            00D21014  mov         eax,dword ptr [ebp-4]
+            00D21017  cdq
+            00D21018  idiv        eax,dword ptr [ebp-8]
+            00D2101B  mov         dword ptr [ebp-0Ch],eax
+            00D2101E  mov         eax,dword ptr [ebp-0Ch]
+            00D21021  add         eax,32h
+            00D21024  mov         dword ptr [ebp-10h],eax
+            00D21027  mov         eax,dword ptr [ebp-10h]
+            00D2102A  mov         esp,ebp
+            00D2102C  pop         ebp
+            00D2102D  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution1" class="button solution-button">Show/hide solution</button>
+
+        <pre class="solution" name="solution1">
+            main() {
+                int a = 999;
+                int b = 3;
+                int c = a / b;
+                int d = c + 50;
+                return d;
+            }
+        </pre>
+    </div>
+
+    <div class="example2 exercise_section">
+        <h2>Exercise 2</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem2">
+            00CB1000  push        ebp
+            00CB1001  mov         ebp,esp
+            00CB1003  sub         esp,0Ch
+            00CB1006  mov         dword ptr [ebp-4],64h
+            00CB100D  mov         dword ptr [ebp-8],0C8h
+            00CB1014  mov         eax,dword ptr [ebp-4]
+            00CB1017  add         eax,dword ptr [ebp-8]
+            00CB101A  mov         dword ptr [ebp-0Ch],eax
+            00CB101D  mov         eax,dword ptr [ebp-0Ch]
+            00CB1020  mov         esp,ebp
+            00CB1022  pop         ebp
+            00CB1023  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution2" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution2">
+            main() {
+            	int a = 100;
+            	int b = 200;
+            	int c = a + b;
+            	return c;
+            }
+        </pre>
+    </div>
+
+    <div class="example3 exercise_section">
+        <h2>Exercise 3</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem3">
+            013D1000  push        ebp
+            013D1001  mov         ebp,esp
+            013D1003  sub         esp,0Ch
+            013D1006  mov         dword ptr [ebp-4],0Ah
+            013D100D  mov         dword ptr [ebp-8],5
+            013D1014  mov         eax,dword ptr [ebp-4]
+            013D1017  cdq
+            013D1018  idiv        eax,dword ptr [ebp-8]
+            013D101B  mov         dword ptr [ebp-0Ch],eax
+            013D101E  mov         eax,dword ptr [ebp-0Ch]
+            013D1021  mov         esp,ebp
+            013D1023  pop         ebp
+            013D1024  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution3" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution3">
+            main() {
+            	int a = 10;
+            	int b = 5;
+            	int c = a / b;
+            	return c;
+            }
+        </pre>
+    </div>
+
+    <div class="example4 exercise_section">
+        <h2>Exercise 4</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem4">
+            01071000  push        ebp
+            01071001  mov         ebp,esp
+            01071003  sub         esp,8
+            01071006  mov         dword ptr [ebp-4],64h
+            0107100D  mov         dword ptr [ebp-8],1194h
+            01071014  mov         eax,dword ptr [ebp-4]
+            01071017  imul        eax,dword ptr [ebp-8]
+            0107101B  mov         esp,ebp
+            0107101D  pop         ebp
+            0107101E  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution4" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution4">
+            main() {
+            	int a = 100;
+            	int b = 4500;
+            	return a * b;
+            }
+        </pre>
+    </div>
+
+    <div class="example5 exercise_section">
+        <h2>Exercise 5</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem5">
+            00251000  push        ebp
+            00251001  mov         ebp,esp
+            00251003  sub         esp,18h
+            00251006  mov         dword ptr [ebp-4],64h
+            0025100D  mov         dword ptr [ebp-8],12Ch
+            00251014  mov         dword ptr [ebp-10h],14h
+            0025101B  mov         dword ptr [ebp-14h],32h
+            00251022  mov         eax,dword ptr [ebp-4]
+            00251025  add         eax,dword ptr [ebp-8]
+            00251028  mov         dword ptr [ebp-0Ch],eax
+            0025102B  mov         ecx,dword ptr [ebp-0Ch]
+            0025102E  add         ecx,dword ptr [ebp-10h]
+            00251031  add         ecx,dword ptr [ebp-14h]
+            00251034  mov         dword ptr [ebp-18h],ecx
+            00251037  mov         eax,0DEADBEEFh
+            0025103C  mov         esp,ebp
+            0025103E  pop         ebp
+            0025103F  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution5" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution5">
+            main() {
+            	int a = 100;
+            	int b = 300;
+            	int c = 20;
+            	int d = 50;
+            	int e = a + b;
+            	int f = e + c + d;
+            	return 0xdeadbeef;
+            }
+        </pre>
+    </div>
+
+
+    <div class="example6 exercise_section">
+        <h2>Exercise 6</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem6">
+            00291000  push        ebp
+            00291001  mov         ebp,esp
+            00291003  sub         esp,8
+            00291006  mov         dword ptr [ebp-4],42h
+            0029100D  mov         dword ptr [ebp-8],4Dh
+            00291014  mov         eax,dword ptr [ebp-4]
+            00291017  cmp         eax,dword ptr [ebp-8]
+            0029101A  jge         00291022
+            0029101C  xor         eax,eax
+            0029101E  jmp         00291027
+            00291020  jmp         00291027
+            00291022  mov         eax,1
+            00291027  mov         esp,ebp
+            00291029  pop         ebp
+            0029102A  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution6" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution6">
+            main() {
+            	int a = 66;
+            	int b = 77;
+
+            	if (a < b)
+            	{
+            		return 0;
+            	}
+            	else {
+            		return 1;
+            	}
+            }
+        </pre>
+    </div>
+
+    <div class="example7 exercise_section">
+        <h2>Exercise 7</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem7">
+            00B31000  push        ebp
+            00B31001  mov         ebp,esp
+            00B31003  sub         esp,8
+            00B31006  mov         dword ptr [ebp-4],14h
+            00B3100D  mov         dword ptr [ebp-8],0Ah
+            00B31014  mov         eax,dword ptr [ebp-4]
+            00B31017  cmp         eax,dword ptr [ebp-8]
+            00B3101A  jne         00B31022
+            00B3101C  xor         eax,eax
+            00B3101E  jmp         00B31027
+            00B31020  jmp         00B31027
+            00B31022  mov         eax,1
+            00B31027  mov         esp,ebp
+            00B31029  pop         ebp
+            00B3102A  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution7" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution7">
+            main() {
+            	int a = 20;
+            	int b = 10;
+
+            	if (a == b)
+            	{
+            		return 0;
+            	}
+            	else {
+            		return 1;
+            	}
+            }
+        </pre>
+    </div>
+
+
+    <div class="example8 exercise_section">
+        <h2>Exercise 8</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem8">
+            003A1000  push        ebp
+            003A1001  mov         ebp,esp
+            003A1003  sub         esp,8
+            003A1006  mov         dword ptr [ebp-4],378h
+            003A100D  mov         dword ptr [ebp-8],3E7h
+            003A1014  mov         eax,dword ptr [ebp-4]
+            003A1017  cmp         eax,dword ptr [ebp-8]
+            003A101A  jne         003A1025
+            003A101C  mov         eax,1
+            003A1021  jmp         003A1038
+            003A1023  jmp         003A1038
+            003A1025  mov         ecx,dword ptr [ebp-4]
+            003A1028  cmp         ecx,dword ptr [ebp-8]
+            003A102B  jg          003A1033
+            003A102D  xor         eax,eax
+            003A102F  jmp         003A1038
+            003A1031  jmp         003A1038
+            003A1033  mov         eax,1
+            003A1038  mov         esp,ebp
+            003A103A  pop         ebp
+            003A103B  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution8" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution8">
+            main() {
+            	int a = 888;
+            	int b = 999;
+
+            	if (a == b)
+            	{
+            		return 1;
+            	}
+            	else if (a <= b) {
+            		return 0;
+            	}
+            	else {
+            		return 1;
+            	}
+            }
+        </pre>
+    </div>
+
+
+    <div class="example9 exercise_section">
+        <h2>Exercise 9</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem9">
+            __my_function:
+            013E1002  in          al,dx
+            013E1003  push        ecx
+            013E1004  mov         eax,dword ptr [ebp+8]
+            013E1007  add         eax,dword ptr [ebp+0Ch]
+            013E100A  mov         dword ptr [ebp-4],eax
+            013E100D  mov         eax,dword ptr [ebp-4]
+            013E1010  mov         esp,ebp
+            013E1012  pop         ebp
+            013E1013  ret
+
+            __main:
+            013E1020  push        ebp
+            013E1021  mov         ebp,esp
+            013E1023  push        14h
+            013E1025  push        0Ah
+            013E1027  call        013E1000
+            013E102C  add         esp,8
+            013E102F  pop         ebp
+            013E1030  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution9" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution9">
+            adding(int a, int b) {
+            	int c = a + b;
+            	return c;
+            }
+
+            main() {
+            	return adding(10,20);
+            }
+        </pre>
+    </div>
+
+
+
+    <div class="example10 exercise_section">
+        <h2>Exercise 10</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem10">
+            __my_function
+            00981002  in          al,dx
+            00981003  push        ecx
+            00981004  mov         eax,dword ptr [ebp+8]
+            00981007  sub         eax,dword ptr [ebp+0Ch]
+            0098100A  mov         dword ptr [ebp-4],eax
+            0098100D  mov         eax,dword ptr [ebp-4]
+            00981010  mov         esp,ebp
+            00981012  pop         ebp
+            00981013  ret
+
+            __main:
+            00981020  push        ebp
+            00981021  mov         ebp,esp
+            00981023  push        ecx
+            00981024  push        14h
+            00981026  push        0Ah
+            00981028  call        00981000
+            0098102D  add         esp,8
+            00981030  mov         dword ptr [ebp-4],eax
+            00981033  mov         eax,dword ptr [ebp-4]
+            00981036  mov         esp,ebp
+            00981038  pop         ebp
+            00981039  ret          </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution10" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution10">
+            subtracting(int a, int b) {
+            	int c = a - b;
+            	return c;
+            }
+
+
+            main() {
+            	int result = subtracting(10, 20);
+            	return result;
+            }
+        </pre>
+    </div>
+
+
+
+    <div class="example11 exercise_section">
+        <h2>Exercise 11</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem11">
+            __my_function
+            00231002  in          al,dx
+            00231003  mov         eax,dword ptr [ebp+8]
+            00231006  cmp         eax,dword ptr [ebp+0Ch]
+            00231009  jne         0023100F
+            0023100B  xor         eax,eax
+            0023100D  jmp         00231014
+            0023100F  mov         eax,1
+            00231014  pop         ebp
+            00231015  ret
+
+            __main:
+            00231020  push        ebp
+            00231021  mov         ebp,esp
+            00231023  push        ecx
+            00231024  push        3E8h
+            00231029  push        1F4h
+            0023102E  call        00231000
+            00231033  add         esp,8
+            00231036  mov         dword ptr [ebp-4],eax
+            00231039  mov         eax,dword ptr [ebp-4]
+            0023103C  mov         esp,ebp
+            0023103E  pop         ebp
+            0023103F  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution11" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution11">
+            my_function(int a, int b) {
+            	if (a == b)
+            	{
+            		return 0;
+            	}
+            	return 1;
+            }
+
+            main() {
+            	int result = my_function(500, 1000);
+            	return result;
+            }
+        </pre>
+    </div>
+
+
+    <div class="example12 exercise_section">
+        <h2>Exercise 12</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem12">
+            __main:
+            00151002  in          al,dx
+            00151003  sub         esp,0Ch
+            00151006  mov         dword ptr [ebp-0Ch],1Eh
+            0015100D  mov         dword ptr [ebp-8],0
+            00151014  mov         dword ptr [ebp-4],0
+            0015101B  jmp         00151026
+            0015101D  mov         eax,dword ptr [ebp-4]
+            00151020  add         eax,1
+            00151023  mov         dword ptr [ebp-4],eax
+            00151026  mov         ecx,dword ptr [ebp-4]
+            00151029  cmp         ecx,dword ptr [ebp-0Ch]
+            0015102C  jge         00151039
+            0015102E  mov         edx,dword ptr [ebp-4]
+            00151031  add         edx,0Ah
+            00151034  mov         dword ptr [ebp-8],edx
+            00151037  jmp         0015101D
+            00151039  mov         eax,dword ptr [ebp-8]
+            0015103C  mov         esp,ebp
+            0015103E  pop         ebp
+            0015103F  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution12" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution12">
+            main() {
+
+            	int a = 30;
+            	int b = 0;
+            	int i;
+            	for (i = 0; i < a; i++)
+            	{
+            		b = i + 10;
+            	}
+            	return b;
+            }
+        </pre>
+    </div>
+
+    <div class="example13 exercise_section">
+        <h2>Exercise 13</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem13">
+            __main:
+            00211000  push        ebp
+            00211001  mov         ebp,esp
+            00211003  sub         esp,14h
+            00211006  mov         dword ptr [ebp-8],32h
+            0021100D  mov         dword ptr [ebp-0Ch],0
+            00211014  mov         dword ptr [ebp-4],0
+            0021101B  jmp         00211026
+            0021101D  mov         eax,dword ptr [ebp-4]
+            00211020  add         eax,1
+            00211023  mov         dword ptr [ebp-4],eax
+            00211026  mov         ecx,dword ptr [ebp-4]
+            00211029  cmp         ecx,dword ptr [ebp-8]
+            0021102C  jge         00211066
+            0021102E  cmp         dword ptr [ebp-4],5
+            00211032  jne         0021104A
+            00211034  mov         dword ptr [ebp-10h],0
+            0021103B  push        214000h
+            00211040  call        002110B0
+            00211045  add         esp,4
+            00211048  jmp         00211064
+            0021104A  cmp         dword ptr [ebp-4],14h
+            0021104E  jne         00211064
+            00211050  mov         dword ptr [ebp-14h],0
+            00211057  push        214010h
+            0021105C  call        002110B0
+            00211061  add         esp,4
+            00211064  jmp         0021101D
+            00211066  mov         eax,dword ptr [ebp-0Ch]
+            00211069  mov         esp,ebp
+            0021106B  pop         ebp
+            0021106C  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution13" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution13">
+            main(){
+                int five;
+            	int twenty;
+            	int a = 50;
+            	int b = 0;
+            	int i;
+            	for (i = 0; i < a; i++)
+            	{
+            		if (i == 5)
+            		{
+            			five = 0;
+            			printf("This is five");
+            		}
+            		else if (i == 20)
+            		{
+            			twenty = 0;
+            			printf("This is twenty");
+            		}
+            	}
+            	return b;
+            }
+        </pre>
+    </div>
+
+
+    <div class="example14 exercise_section">
+        <h2>Exercise 14</h2>
+        <p class="exercise_color">
+            Compiler: Visual Studio<br>
+            Optimization disabled, security checks disabled
+        </p>
+
+        <pre class="assem14">
+            __main:
+            011F1000  push        ebp
+            011F1001  mov         ebp,esp
+            011F1003  sub         esp,8
+            011F1006  mov         dword ptr [ebp-8],0
+            011F100D  cmp         dword ptr [ebp-8],0
+            011F1011  je          011F102B
+            011F1013  mov         eax,dword ptr [ebp-4]
+            011F1016  add         eax,1
+            011F1019  mov         dword ptr [ebp-4],eax
+            011F101C  cmp         dword ptr [ebp-4],0Ah
+            011F1020  jne         011F1029
+            011F1022  mov         dword ptr [ebp-8],1
+            011F1029  jmp         011F100D
+            011F102B  mov         eax,0F00DEA11h
+            011F1030  mov         esp,ebp
+            011F1032  pop         ebp
+            011F1033  ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution14" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution14">
+            main() {
+
+            	int a = 0;
+            	int b;
+            	while (a)
+            	{
+            		b++;
+            		if (b == 10)
+            		{
+            			a = 1;
+            		}
+            	}
+            	return 0xf00dea11;
+            }
+        </pre>
+    </div>
+
+    <div class="example15 exercise_section">
+        <h2>Exercise 15</h2>
+        <p class="exercise_color">
+            Compiler: Not compiled. Straight assembly.<br>
+        </p>
+
+        <pre class="assem15">
+            function:
+                push ebp
+                mov ebp, esp
+                mov ebx, [ebp+0x8]
+                mov ecx, [ebp+0xc]
+            loop:
+                cmp ebx, ecx
+                je done
+                cmp ecx, ebx
+                jle else
+                sub ecx,ebx
+                jmp loop
+            else:
+                sub ebx, ecx
+                jmp loop
+
+            done:
+                mov eax,ecx
+                mov esp, ebp
+                pop ebp
+                ret
+        </pre>
+
+        <h3>Solution</h3>
+        <button type="button" name="solution15" class="button solution-button">Show/hide solution</button>
+        <pre class="solution" name="solution15">
+            function(int a, int b)
+            {
+            	while(a != b){
+            		if (b > a)
+            		{
+            			b = b - a;
+            		}
+            		else {
+            			a = a - b;
+            		}
+            	}
+            	return b;
+            }
+        </pre>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
