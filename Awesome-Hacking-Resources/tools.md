@@ -16,7 +16,7 @@ Repository | Description
 [Scanners-Box](https://github.com/We5ter/Scanners-Box)  | The toolbox of open source scanners
 [SecLists](https://github.com/danielmiessler/SecLists) | It is a collection of multiple types of lists used during security assessments
 [Xerosploit](https://github.com/LionSec/xerosploit)   |     Efficient and advanced man in the middle framework
-[ctf-tools](https://github.com/zardus/ctf-tools) | Some setup scripts for security research tools. 
+[ctf-tools](https://github.com/zardus/ctf-tools) | Some setup scripts for security research tools.
 [PENTEST-WIKI](https://github.com/nixawk/pentest-wiki) | PENTEST-WIKI is a free online security knowledge library for pentesters / researchers. If you have a good idea, please share it with others.
 
 
@@ -37,15 +37,15 @@ Name | Description
 ### Linux Security Tools
 Name | Description
 ---- | ----
-[DefenseMatrix](https://github.com/K4YT3X/DefenseMatrix) | Full security solution for Linux Servers 
-[Kernelpop](https://github.com/spencerdodd/kernelpop) | kernel privilege escalation enumeration and exploitation framework 
+[DefenseMatrix](https://github.com/K4YT3X/DefenseMatrix) | Full security solution for Linux Servers
+[Kernelpop](https://github.com/spencerdodd/kernelpop) | kernel privilege escalation enumeration and exploitation framework
 [Lynis](https://github.com/CISOfy/lynis) | Security auditing tool for Linux, macOS, and UNIX-based systems.
 [linux-explorer](https://github.com/intezer/linux-explorer) | Easy-to-use live forensics toolbox for Linux endpoints
 
 ### Exploit Databases
 Name | Description
 ---- | ----
-[0day](http://0day.today/) | Inj3ct0r is the ultimate database of exploits and vulnerabilities and a great resource for vulnerability researchers and security professionals. 
+[0day](http://0day.today/) | Inj3ct0r is the ultimate database of exploits and vulnerabilities and a great resource for vulnerability researchers and security professionals.
 [cxsecurity](http://cxsecurity.com/exploit) | Exploit Database
 [exploit-db](https://www.exploit-db.com/) | Exploits Database by Offensive Security
 [iedb](http://iedb.ir/) | Iranian Exploit DataBase
@@ -57,7 +57,7 @@ Name | Description
 [BetterCAP](https://www.bettercap.org/) | MITM attacks against a network, manipulate HTTP, HTTPS and TCP traffic in realtime, sniff for credentials and much more.
 [Burp Suite](https://portswigger.net/burp) | GUI based tool for testing Web application security.
 [Ettercap](https://ettercap.github.io/ettercap/) | Ettercap is a comprehensive suite for man in the middle attacks
-[Evilginx](https://github.com/kgretzky/evilginx) | Man-in-the-middle attack framework used for phishing credentials and session cookies of any web service. 
+[Evilginx](https://github.com/kgretzky/evilginx) | Man-in-the-middle attack framework used for phishing credentials and session cookies of any web service.
 [MITMf](https://github.com/byt3bl33d3r/MITMf) | Framework for Man-In-The-Middle attacks
 [mitmproxy](https://mitmproxy.org/) | An interactive console program that allows traffic flows to be intercepted, inspected, modified and replayed
 
@@ -105,9 +105,22 @@ Name | Description
 Name | Description
 ---- | ----
 [BinNavi](https://github.com/google/binnavi) | BinNavi is a binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code
-[Radare2](https://github.com/radare/radare2) | Radare2 is a reverse engineering suite which includes a complete toolkit for reverse enigneering needs. 
+[Radare2](https://github.com/radare/radare2) | Radare2 is a reverse engineering suite which includes a complete toolkit for reverse enigneering needs.
 
 ### Collaboration tools
 Name | Description
 ---- | ----
 [Dradis](https://dradisframework.com/ce/) | Open-source reporting and collaboration tool for InfoSec professionals
+
+### Linux privilege escalation
+    https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+    https://www.kernel-exploits.com/
+    https://github.com/rebootuser/LinEnum
+    https://github.com/PenturaLabs/Linux\_Exploit\_Suggester
+    https://www.securitysift.com/download/linuxprivchecker.py
+    http://pentestmonkey.net/tools/audit/unix-privesc-check
+    https://github.com/mzet-/linux-exploit-suggester
+    http://www.darknet.org.uk/2015/06/unix-privesc-check-unixlinux-user-privilege-escalation-scanner/
+    https://www.youtube.com/watch?v=dk2wsyFiosg
+    http://resources.infosecinstitute.com/privilege-escalation-linux-live-examples/\#gref
+    https://www.rebootuser.com/?p=1758
