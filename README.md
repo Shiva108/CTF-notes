@@ -2,7 +2,17 @@
 
 ## Index
 
+<<<<<<< HEAD
 ```
+=======
+.
+├── Active-Directory-Fun
+├── Awesome-Advanced-Windows-Exploitation-References
+├── Awesome-Hacking-Resources
+├── AwesomeXSS
+│   └── Database
+├── Books
+>>>>>>> bc5695091327718fd7fb021b335b0d3ce948a473
 ├── Bypassing-Web-Application-Firewalls
 ├── ctf
 │   └── natas
@@ -6364,4 +6374,9 @@
     │   └── project
     ├── js
     └── reveng
+<<<<<<< HEAD
 '''
+=======
+
+6367 directories
+>>>>>>> bc5695091327718fd7fb021b335b0d3ce948a473

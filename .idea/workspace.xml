@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca08a475-266b-4452-a05c-ba8c3edb8014" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web-CTF-Cheatsheet/scripts/windows/download.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Web-CTF-Cheatsheet/scripts/windows/download.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oscp" beforeDir="false" afterPath="$PROJECT_DIR$/oscp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oscp/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/oscp/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/css/animations-ie-fix.css" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/css/animations-ie-fix.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/css/animations.css" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/css/animations.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/img/project/cb.png" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/img/project/cb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/img/project/hostro.png" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/img/project/hostro.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/img/project/mgs.png" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/img/project/mgs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/img/project/weather.png" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/img/project/weather.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/img/project/wik.png" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/img/project/wik.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xapax.github.io/js/css3-animate-it.js" beforeDir="false" afterPath="$PROJECT_DIR$/xapax.github.io/js/css3-animate-it.js" afterDir="false" />
-    </list>
+    <list default="true" id="ca08a475-266b-4452-a05c-ba8c3edb8014" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,18 +99,46 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532889106622</updated>
-      <workItem from="1559471248387" duration="181000" />
+      <workItem from="1559471248387" duration="953000" />
     </task>
+    <task id="LOCAL-00001" summary="Pull/pushing in order to get version under control">
+      <created>1559471485155</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559471485155</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Pull/pushing in order to get version under control">
+      <created>1559471516693</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559471516693</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ontrol">
+      <created>1559471563993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559471563993</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adding unvers files">
+      <created>1559471612712</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559471612712</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181000" />
+    <option name="totallyTimeSpent" value="953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1600" height="851" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25740024" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25740024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -137,9 +149,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49938726" weight="0.3293348" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.498713" visible="true" weight="0.32916668" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061274" side_tool="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501287" side_tool="true" visible="true" weight="0.32916668" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3293348" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49938726" weight="0.3293348" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -153,10 +165,13 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Pull/pushing in order to get version under control" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pull/pushing in order to get version under control" />
+    <MESSAGE value="ontrol" />
+    <MESSAGE value="Adding unvers files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding unvers files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Awesome-Hacking-Resources/tools.md">
