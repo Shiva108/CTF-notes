@@ -2,9 +2,30 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Active-Directory-Fun" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Awesome-Advanced-Windows-Exploitation-References" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AwesomeXSS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Bypassing-Web-Application-Firewalls" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Hydra-Cheatsheet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/IntruderPayloads" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Linux-Privilege-Escalation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MSF-Venom-Cheatsheet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OSCPRepo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PayloadsAllTheThings" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Powershell-Cheatsheet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Red-Team-Infrastructure-Wiki" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SCADA PLC ICS Pentest PDFs/awesome-industrial-control-system-security" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SecLists" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Web-CTF-Cheatsheet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Windows-Privilege-Escalation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/escalationserver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/oscp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pentest_compilation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pentestbook" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pronotes" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/resource-threat-hunting" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/security-cheatsheets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/xapax.github.io" vcs="Git" />
   </component>
 </project>
