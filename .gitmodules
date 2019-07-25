@@ -1,0 +1,9 @@
+[submodule "awesome-mitre-attack"]
+	path = awesome-mitre-attack
+	url = ../../infosecn1nja/awesome-mitre-attack.git
+[submodule "Checklists"]
+	path = Checklists
+	url = ../../netbiosX/Checklists.git
+[submodule "Open-Source-Security-List-"]
+	path = Open-Source-Security-List-
+	url = ../../RedWolfIntelligence/Open-Source-Security-List-.git
