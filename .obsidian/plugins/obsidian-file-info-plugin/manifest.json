@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-file-info-plugin",
+	"name": "File Info Panel",
+	"version": "1.2.5",
+	"minAppVersion": "0.12.0",
+	"description": "Plugin for Obsidian that creates a File Information view that displays the active file's date created, date modified, file size, and links to open the file in its native application and to open the file's folder.  It also has writing statistics (character, word, sentence, and paragraph counts) and a word frequency analysis.",
+	"author": "T. L. Ford",
+	"authorUrl": "https://www.Cattail.Nu",
+	"isDesktopOnly": false
+}

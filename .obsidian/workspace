@@ -1,0 +1,102 @@
+{
+  "main": {
+    "id": "42d39a21c5ba0ee8",
+    "type": "split",
+    "children": [
+      {
+        "id": "b3ceb749d7414511",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "PENTESTING-BIBLE/README.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "661500a558e8ed26",
+    "type": "split",
+    "children": [
+      {
+        "id": "9649b84ead455fd7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "feba86bb1fd7ffef",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "77a4f4f698e2ef6b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "camera",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 309
+  },
+  "right": {
+    "id": "b5a540311d5774b6",
+    "type": "split",
+    "children": [
+      {
+        "id": "836f797b38dff8c7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fb50ba978250dfb7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PENTESTING-BIBLE/README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "b3ceb749d7414511",
+  "lastOpenFiles": [
+    "PENTESTING-BIBLE/README.md",
+    "pentestbook/list_of_common_ports.md",
+    "oscp/templates/linux-template.md",
+    "PayloadsAllTheThings/Insecure Deserialization/README.md",
+    "oscp/templates/windows-template.md",
+    "Active-Directory-Fun/README.md",
+    "Offensive-Security-OSCP-Cheatsheets/SUMMARY.md",
+    "pentestbook/SUMMARY.md"
+  ]
+}
