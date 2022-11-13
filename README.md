@@ -1,7 +1,6 @@
-# CTF-Notes - Hackers Resources Galore
+# Project tree
 
-## Index
-
+.
  * [awesome-mitre-attack](./awesome-mitre-attack)
  * [Buffer_Overflow](./Buffer_Overflow)
    * [Screenshots](./Buffer_Overflow/Screenshots)
@@ -139,8 +138,24 @@
  * [tbhm](./tbhm)
    * [v4](./tbhm/v4)
  * [Pentest-Everything](./Pentest-Everything)
-     * [everything](./Pentest-Everything/everything)
-     * [resources](./Pentest-Everything/resources)
-     * [to-do-wip](./Pentest-Everything/to-do-wip)
-     * [wip-osint](./Pentest-Everything/wip-osint)
-     * [writeups](./Pentest-Everything/writeups)
+   * [everything](./Pentest-Everything/everything)
+   * [resources](./Pentest-Everything/resources)
+   * [to-do-wip](./Pentest-Everything/to-do-wip)
+   * [wip-osint](./Pentest-Everything/wip-osint)
+   * [writeups](./Pentest-Everything/writeups)
+ * [OSEP-Code-Snippets](./OSEP-Code-Snippets)
+   * [AppLocker Bypass PowerShell Runspace](./OSEP-Code-Snippets/AppLocker Bypass PowerShell Runspace)
+   * [Fileless Lateral Movement](./OSEP-Code-Snippets/Fileless Lateral Movement)
+   * [Linux Shellcode Encoder](./OSEP-Code-Snippets/Linux Shellcode Encoder)
+   * [Linux Shellcode Loaders](./OSEP-Code-Snippets/Linux Shellcode Loaders)
+   * [MiniDump](./OSEP-Code-Snippets/MiniDump)
+   * [MSSQL](./OSEP-Code-Snippets/MSSQL)
+   * [PrintSpoofer.NET](./OSEP-Code-Snippets/PrintSpoofer.NET)
+   * [ROT Shellcode Encoder](./OSEP-Code-Snippets/ROT Shellcode Encoder)
+   * [Sections Shellcode Process Injector](./OSEP-Code-Snippets/Sections Shellcode Process Injector)
+   * [Shellcode Process Hollowing](./OSEP-Code-Snippets/Shellcode Process Hollowing)
+   * [Shellcode Process Injector](./OSEP-Code-Snippets/Shellcode Process Injector)
+   * [Simple Shellcode Runner](./OSEP-Code-Snippets/Simple Shellcode Runner)
+   * [XOR Shellcode Encoder](./OSEP-Code-Snippets/XOR Shellcode Encoder)
+ * [Active-Directory-Exploitation-Cheat-Sheet](./Active-Directory-Exploitation-Cheat-Sheet)
+ * [oscp-pre-preparation-plan-and-notes](./oscp-pre-preparation-plan-and-notes)
