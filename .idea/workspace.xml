@@ -2,10 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca08a475-266b-4452-a05c-ba8c3edb8014" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.obsidian/core-plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/.obsidian/core-plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/mimikatz32.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/mimikatz32.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/mimikatz64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/mimikatz64.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/nc.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/nc.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/nc64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/nc64.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/priv-check.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Everything-OSCP/Windows Post exploitation/priv-check.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/createminidump (1).exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/createminidump (1).exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/createminidump.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/createminidump.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/inject1 (1).exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/inject1 (1).exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/inject1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/inject1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/pebmasquerade.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/pebmasquerade.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/perparser.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/perparser.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/t1013-portmonitor64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets/.gitbook/assets/t1013-portmonitor64.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings" beforeDir="false" afterPath="$PROJECT_DIR$/PayloadsAllTheThings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/Server Side Request Forgery/Images/Parser &amp; Curl &lt; 7.54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/Upload Insecure Files/Extension PHP/shell.gif?shell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/Upload Insecure Files/Extension PHP/shell.jpg?shell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/Upload Insecure Files/Extension PHP/shell.png?shell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/XSS Injection/Files/&quot;&gt;&lt;img src=x onerror=alert(document.cookie);.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/XSS Injection/Files/&quot;&gt;&lt;svg onload=alert(1)&gt;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayloadsAllTheThings/XSS Injection/Files/'&gt;&lt;svg onload=alert(1)&gt;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Windows-Privilege-Escalation" beforeDir="false" afterPath="$PROJECT_DIR$/Windows-Privilege-Escalation" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Windows-Privilege-Escalation/CopyAndPasteEnum.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Windows-Privilege-Escalation/CopyAndPasteEnum.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Windows-Privilege-Escalation/CopyAndPasteFileDownloader.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Windows-Privilege-Escalation/CopyAndPasteFileDownloader.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Windows-Privilege-Escalation/windows_recon.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Windows-Privilege-Escalation/windows_recon.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Windows-Privilege-Escalation/winreconstreamline.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Windows-Privilege-Escalation/winreconstreamline.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-16-legacy.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-16-legacy.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-17-beep.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-17-beep.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-18-blue.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-07-18-blue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-08-07-irked.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-08-07-irked.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-08-10-bastion.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-08-10-bastion.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-09-18-OSCP-personal-cheatsheet.md" beforeDir="false" afterPath="$PROJECT_DIR$/liodeus.github.io/_posts/2020-09-18-OSCP-personal-cheatsheet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pentestbook" beforeDir="false" afterPath="$PROJECT_DIR$/pentestbook" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pentestbook/list_of_common_ports.md" beforeDir="false" afterPath="$PROJECT_DIR$/pentestbook/list_of_common_ports.md" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,9 +62,6 @@
     <expand />
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -38,11 +72,15 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="351" />
     <option name="width" value="1390" />
     <option name="height" value="1002" />
   </component>
+  <component name="ProjectId" id="2HUh86NyPGOw6jhnWdhjTwWd6qB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -63,25 +101,19 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/e/Desktop/CTF-notes",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -158,10 +190,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/SecLists" />
+      <path value="$PROJECT_DIR$/IntruderPayloads" />
+    </ignored-roots>
     <MESSAGE value="Pull/pushing in order to get version under control" />
     <MESSAGE value="ontrol" />
     <MESSAGE value="Adding unvers files" />

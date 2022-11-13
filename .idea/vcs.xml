@@ -2,30 +2,43 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Active-Directory-Exploitation-Cheat-Sheet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Active-Directory-Fun" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Awesome-Advanced-Windows-Exploitation-References" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/AwesomeXSS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Buffer_Overflow" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Bypassing-Web-Application-Firewalls" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Cheatsheet-God" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Checklists" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Everything-OSCP" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Hydra-Cheatsheet" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/IntruderPayloads" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Linux-Privilege-Escalation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/MSF-Venom-Cheatsheet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OSCP-Exam-Report-Template" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/OSCPRepo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OSEP-Code-Snippets" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Offensive-Security-OSCP-Cheatsheets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Open-Source-Security-List-" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PENTESTING-BIBLE" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/PayloadsAllTheThings" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Pentest-Everything" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Powershell-Cheatsheet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Red-Team-Infrastructure-Wiki" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SCADA PLC ICS Pentest PDFs/awesome-industrial-control-system-security" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/SecLists" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Web-CTF-Cheatsheet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Windows-Privilege-Escalation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/awesome-mitre-attack" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/escalationserver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/liodeus.github.io" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/oscp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/oscp-pre-preparation-plan-and-notes" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pentest-book" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pentest_compilation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pentestbook" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pronotes" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/resource-threat-hunting" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/security-cheatsheets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tbhm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/xapax.github.io" vcs="Git" />
   </component>
 </project>

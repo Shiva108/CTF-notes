@@ -9,7 +9,19 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "PENTESTING-BIBLE/README.md",
+            "file": "Pentest-Everything/everything/everything-active-directory/ad-enumeration.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "8f9019ce88cb9307",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "PayloadsAllTheThings/Methodology and Resources/Windows - Post Exploitation Koadic.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "camera",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -49,8 +61,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -70,13 +81,13 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PENTESTING-BIBLE/README.md",
+                "file": "PayloadsAllTheThings/Methodology and Resources/Windows - Post Exploitation Koadic.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": false,
+                "backlinkCollapsed": true,
                 "unlinkedCollapsed": true
               }
             }
@@ -85,18 +96,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
-  "active": "b3ceb749d7414511",
+  "active": "feba86bb1fd7ffef",
   "lastOpenFiles": [
+    "PayloadsAllTheThings/Methodology and Resources/Windows - Post Exploitation Koadic.md",
+    "Windows-Privilege-Escalation/RemoteDesktop.md",
+    "Active-Directory-Exploitation-Cheat-Sheet/README.md",
     "PENTESTING-BIBLE/README.md",
+    "Pentest-Everything/everything/everything-active-directory/adversary-in-the-middle/rdp-mitm.md",
+    "Pentest-Everything/everything/everything-active-directory/ad-enumeration.md",
+    "pentestbook/online_password_cracking.md",
     "pentestbook/list_of_common_ports.md",
-    "oscp/templates/linux-template.md",
-    "PayloadsAllTheThings/Insecure Deserialization/README.md",
-    "oscp/templates/windows-template.md",
-    "Active-Directory-Fun/README.md",
-    "Offensive-Security-OSCP-Cheatsheets/SUMMARY.md",
-    "pentestbook/SUMMARY.md"
+    "Notes VA/Initial Enumeration.md",
+    "liodeus.github.io/_posts/2020-09-18-OSCP-personal-cheatsheet.md"
   ]
 }
