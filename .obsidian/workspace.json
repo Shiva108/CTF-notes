@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "298b1fcd396d2c5f",
+        "id": "46f9e678bf4130ed",
         "type": "tabs",
         "children": [
           {
-            "id": "e256c1e56721ad75",
+            "id": "0e3e01d7c0e798f2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Offensive-Security-OSCP-Cheatsheets/offensive-security/t1010-application-window-discovery.md",
+                "file": "RedTeaming_CheatSheet/infrastructure/privesc_windows.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mitre",
+                "query": "msfvenom",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -64,9 +64,16 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "b65b625b2e3bdbf9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Offensive-Security-OSCP-Cheatsheets/offensive-security/t1010-application-window-discovery.md",
+                "file": "RedTeaming_CheatSheet/infrastructure/privesc_windows.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Offensive-Security-OSCP-Cheatsheets/offensive-security/t1010-application-window-discovery.md",
+                "file": "RedTeaming_CheatSheet/infrastructure/privesc_windows.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Offensive-Security-OSCP-Cheatsheets/offensive-security/t1010-application-window-discovery.md"
+                "file": "RedTeaming_CheatSheet/infrastructure/privesc_windows.md"
               }
             }
           }
@@ -147,17 +154,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e256c1e56721ad75",
+  "active": "b498455bb358b762",
   "lastOpenFiles": [
-    "Pentest-Everything/everything/everything-active-directory/input-capture/README.md",
-    "README.md",
-    "Pentest-Everything/everything/everything-active-directory/persistence/create-or-modify-system-process/README.md",
-    "awesome-mitre-attack/README.md",
-    "resource-threat-hunting/README.md",
-    "Pentest-Everything/everything/everything-active-directory/credential-access/credentials-from-password-stores/README.md",
-    "Pentest-Everything/everything/everything-active-directory/defense-evasion/impair-defenses/disable-windows-event-logging.md",
+    "liodeus.github.io/_posts/OSCP-exam-report-template_whoisflynn_v3.2.md",
+    "pentestbook/create_shellcode.md",
+    "penbook/bypassing_antivirus.md",
+    "pentestbook/bypassing_antivirus.md",
+    "Offensive-Security-OSCP-Cheatsheets/offensive-security/av-bypass-with-metasploit-templates.md",
+    "Pentest-Everything/writeups/hackthebox/linux/backdoor.md",
+    "amr-git-dot.github.io/_posts/Offensive/2023-1-24-Priv-esc.md",
+    "amr-git-dot.github.io/_posts/Malware-Analysis/2023-01-01-RedLineStealer.md",
+    "liodeus.github.io/_posts/2020-08-10-bastion.md",
+    "Pentest-Everything/writeups/hackthebox/windows-machines/windows-bastion-wip.md",
+    "pentest_notebook/Active Directory/Privilege Escalation/Targeted Kerberoasting - AS-REPs.md",
     "PENTESTING-BIBLE/README.md",
-    "pentestbook/active_information_gathering.md",
-    "pentestbook/cross-site-scripting.md"
+    "PayloadsAllTheThings/CVE Exploits/README.md",
+    "Pentest-Everything/everything/everything-active-directory/credential-access/modify-authentication-process/README.md",
+    "pentest_compilation/README.md",
+    "pentest-book/enumeration/ports.md",
+    "pentest-book/others/dictionaries.md"
   ]
 }
