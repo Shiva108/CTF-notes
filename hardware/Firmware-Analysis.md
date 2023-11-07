@@ -1,0 +1,66 @@
+---
+title: Firmware Analysis
+description: 
+tags:
+    - IoT
+    - Reverse Engineering
+refs:
+date: 2023-07-19
+draft: false
+---
+
+## Static Analysis
+
+The following tools are useful for static analysis.
+
+- **[Firmwalker](https://github.com/craigz28/firmwalker)**
+- **[firmware-mod-kit](https://code.google.com/archive/p/firmware-mod-kit/)**
+
+```sh
+file ./firmware
+
+binwalk ./firmware
+# -M: Matryosika (recursively) scan extracted files
+# -r: Delete carved files after extracting
+# -e: Extract known file types
+binwalk -Mre ./firmware
+# -E: Calculate file entropy
+# -N: Do not generate an entropy plot graph
+binwalk -EN ./firmware
+
+# firmware-mod-kit
+./extract-firmware.sh ./firmware
+```
+
+<br />
+
+## Dynamic Analysis
+
+```sh
+gdb ./firmware
+rizin ./firmware
+```
+
+### Using FIRMADYNE
+
+**[FIRMADYNE](https://github.com/firmadyne/firmadyne)** is a platform for emulation and dynamic analysis of Linux-based firmware.
+
+```sh
+# Analyze and emulate the system
+./fat.py example.squashfs
+```
+
+The analysis will start.  
+Copy the ip address in the output as below.
+
+```sh
+Network interfaces: [('brtrunk', '192.168.0.100')]
+```
+
+In local machine, port forward using the ip.
+
+```sh
+ssh -L 8081:192.168.0.100:80 remote-user@<remote-ip>
+```
+
+Now we can access to http://127.0.0.1:8081/

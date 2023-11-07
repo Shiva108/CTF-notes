@@ -1,0 +1,135 @@
+---
+title: AES (Advanced Encryption Standard)
+description: AES is a specification for the encryption of electronic data.
+tags:
+    - Cryptography
+refs:
+	- https://www.javainuse.com/aesgenerator
+    - https://zhangzeyu2001.medium.com/attacking-cbc-mode-bit-flipping-7e0a1c185511
+date: 2023-07-28
+draft: false
+---
+
+## Decrypt
+
+### GPG
+
+```bash
+gpg --decrypt example.gpg
+```
+
+### OpenSSL
+
+```bash
+# AES-256-CBC
+openssl aes-256-cbc -d -in encrypted_text -out decrypted.txt
+
+# AES-256-CBC (PBKDF2)
+openssl aes-256-cbc -pbkdf2 -iter 10000 -d -in encrypted_text -out decrypted.txt
+```
+
+<br />
+
+## Encrypt
+
+### GPG
+
+```bash
+gpg --symmetric --cipher-algo CIPHER message.txt
+```
+
+### OpenSSL
+
+```bash
+# AES-256-CBC
+openssl aes-256-cbc -e -in message.txt -out encrypted_message
+
+# AES-256-CBC (PBKDF2)
+openssl aes-256-cbc -pbkdf2 -iter 10000 -e -in message.txt -out encrypted_message
+```
+
+### PowerShell
+
+Reference: https://learn.microsoft.com/ja-jp/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.3
+
+```powershell
+# Generate a secure string (input a plain text in prompt)
+$secure = Read-Host -AsSecureString
+
+# Store a key
+$key = (1..16)
+
+# Generate an encrypted string from the secure string
+$encrypted = ConvertFrom-SecureString -SecureString $secure
+# using key
+$encrypted = ConvertFrom-SecureString -SecureString $secure -Key $key
+
+echo $encrypted
+
+# Convert an encrypted string to a secure string
+$secure2 = ConvertTo-SecureString -String $encrypted
+# using key
+$secure2 = ConvertTo-SecureString -String $encrypted -Key $key
+
+echo $secure2
+
+# Reveal user password
+$userpass = (New-Object pscredential 0, $encrypted).GetNetworkCredential().Password
+```
+
+<br />
+
+## Implement AES in Python
+
+Reference: [https://medium.com/quick-code/aes-implementation-in-python-a82f582f51c2](https://medium.com/quick-code/aes-implementation-in-python-a82f582f51c2)  
+
+We need **`pycryptodome`** for implementing AES easily.
+
+```bash
+pip install pycryptodome
+```
+
+Below is a Python script for AES encryption and decryption.
+
+```python
+import hashlib
+from Crypto import Random
+from Crypto.Cipher import AES
+from base64 import b64encode, b64decode
+
+class AESCipher(object):
+	def __init__(self, key):
+		# AES block size is 128 bit
+		self.block_size = AES.block_size
+		# Generate unique 256 bit key
+		self.key = hashlib.sha256(key.encode()).digest()
+
+	def encrypt(self, plaintext):
+		plaintext = self.__pad(plaintext)
+		# IV (Initialization Vector) is the same size as the block size
+		iv = Random.new().read(self.block_size)
+		cipher = AES.new(self.key, AES.MODE_CBC, iv)
+		ciphertext = cipher.encrypt(plaintext.encode())
+		return b64encode(iv + ciphertext).decode('utf-8')
+
+	def decrypt(self, ciphertext):
+		ciphertext = b64decode(ciphertext)
+		iv = ciphertext[:self.block_size]
+		cipher = AES.new(self.key, AES.MODE_CBC, iv)
+		plaintext = cipher.decrypt(ciphertext[self.block_size:]).decode('utf-8')
+		return self.__unpad(plaintext)
+
+	# Pad a plaintext for it to be a multiple of 128 bits.
+	def __pad(self, plaintext):
+		num_of_bytes_to_pad = self.block_size - len(plaintext) % self.block_size
+		ascii_str = chr(num_of_bytes_pad)
+		pad_str = num_of_bytes_to_pad * ascii_str
+		pad_plaintext = plaintext + pad_str
+		return pad_plaintext
+
+	@staticmethod
+	def __unpad(plaintext):
+		last_char = plaintext[len(plaintext) -1:]
+		bytes_to_remove = ord(last_char)
+		return plaintext[:-bytes_to_remove]
+```

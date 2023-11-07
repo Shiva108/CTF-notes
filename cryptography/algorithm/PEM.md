@@ -1,0 +1,23 @@
+---
+title: PEM (Privacy Enhanced Mail)
+description: PEM uses RSA encryption.
+tags:
+    - Cryptography
+refs:
+date: 2022-12-01
+draft: false
+---
+
+## Decrypt
+
+First of all, you need to format the PEM file to make the John to recognize it.
+
+```sh
+pem2john example.pem > hash.txt
+```
+
+Crack the hash.
+
+```sh
+john --wordlist=wordlist.txt hash.txt
+```

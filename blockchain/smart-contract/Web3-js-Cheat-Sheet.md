@@ -1,0 +1,112 @@
+---
+title: Web3.js Cheat Sheet
+description: 
+tags:
+    - Blockchain
+    - Ethereum
+    - Web3
+refs:
+date: 2023-10-02
+draft: false
+---
+
+## Blocks
+
+```js
+// Get block
+web3.eth.getBlock('latest')
+```
+
+<br />
+
+## Converting
+
+```js
+// Wei to Ether
+web3.utils.fromWei('1000000000000000000', 'ether')
+// "1"
+
+// Ether to Wei
+web3.utils.toWei('0.001')
+// "1000000000000000"
+```
+
+<br />
+
+## Contract
+
+```js
+// Initialize a contract
+const tokenAbi = [...]; // JSON interface
+const tokenAddress = '0x1234...';
+const contract = new web3.eth.Contract(tokenAbi, tokenAddress);
+```
+
+<br />
+
+## Send Ether to Contract
+
+```js
+// Send ether to the contract with interacting ABI
+contract.example({value: web3.utils.toWei('0.001')})
+
+// Send ether to the contract from outside
+contract.sendTransaction({value: toWei('0.0001')})
+
+// Send ether to the contract from outside using `call` function to invoke fallback
+(bool success,) = payable(_victim_contract_address).call{value: '1.0'}("");
+
+// Send etehr to the contract from outside by invoking specific function
+contract.exampleFunc{value: msg.value}(address(this))
+```
+
+<br />
+
+## Get Storage of Contract
+
+```js
+// the second arguement is the index of the storage.
+web3.eth.getStorageAt(contract.address, 0)
+web3.eth.getStorageAt(contract.address, 1)
+```
+
+<br />
+
+## Function Signature
+
+We can retrieve a function signature with `encodeFunctionSignature`.  We can also use it to invoke the contract function via `sendTransaction`.
+
+```jsx
+const example = web3.eth.abi.encodeFunctionSignature("example()")
+
+// We can invoke the function using this signature
+await web3.eth.sendTransaction({from: userAddress, to: contractAddress, data: example})
+```
+
+<br />
+
+## Function Call
+
+```js
+const myAddress = "0x123...";
+const functionSignature = {
+  name: 'exampleFunc',
+  type: 'function',
+  inputs: [{type: 'address', name: '_address'}]
+}
+const params = [myAddress]
+
+const funcData = web3.eth.abi.encodeFunctionCall(functionSignature, params)
+
+// Execute the function
+await web3.eth.sendTransaction({from: myAddress, to: contract.address, funcData})
+```
+
+<br />
+
+## Send Ether to Contract
+
+```js
+// Set a gas value
+contract.exampleFunc{gas: 100000}()
+```
