@@ -1,0 +1,16 @@
+category1: network
+related_menus:
+  - title: Protocol
+    id: protocol
+  - title: Port Forwarding
+    id: port-forwarding
+  - title: WiFi
+    id: wifi
+  - title: Attack
+    id: attack
+  - title: Tool
+    id: tool
+  - title: VPN
+    id: vpn
+  - title: Others
+    id: others

@@ -1,0 +1,77 @@
+---
+title: Memory Forensics
+description: Memory Forensics is the analysis of the volatile memory, mainly Random Access Memory (RAM). There are various memory capture file formats like .bin, .mem, .raw, .sav, .vmem.
+tags:
+    - Forensics
+refs:
+date: 2023-01-29
+draft: false
+---
+
+## Volatility
+
+**[Volatility](https://github.com/volatilityfoundation/volatility3)** is an useful tool for memory forensics.  
+If you use a Debian based operating system, you can install using apt.
+
+```sh
+sudo apt install volatility3
+
+# Confirm if download successfully
+vol -h
+```
+
+However, it’s recommended to download it from the GitHub repository if you want the latest stable version.
+
+### Target: Windows
+
+```sh
+# Determine the operating system
+python3 vol.py -f example.vmem windows.info
+
+# Dump password hashes
+python3 vol.py -f example.vmem windows.hashdump
+
+# Print command line history
+python3 vol.py -f example.vmem windows.cmdline.CmdLine
+
+# List all of the processes
+python3 vol.py -f example.vmem windows.pslist
+# Scan processes.
+python3 vol.py -f example.vmem windows.psscan.PsScan
+# List processes in a tree based on their parent process ID.
+python3 vol.py -f example.vmem windows.pstree.PsTree
+
+# Lists hidden processes
+python vol.py -f example.vmem windows.ldrmodules
+
+# Scans for network objects present in a particular windows memory image.
+python3 vol.py -f example.vmem windows.netscan.NetScan
+
+# Scan for file objects present in a windows memory image.
+python3 vol.py -f example.vmem windows.filescan.FileScan
+python3 vol.py -f example.vmem windows.filescan.FileScan | grep <keyword>
+
+# Lists process memory ranges that potentially contain injected code.
+python3 vol.py -f example.vmem windows.malfind.Malfind
+# Dumps
+python3 vol.py -f example.vmem -o dumps windows.malfind.Malfind --dump
+
+# Lists the loaded modules in a particular windows memory image.
+python3 vol.py -f example.vmem windows.dlllist.DllList
+# Specifies PID
+python3 vol.py -f example.vmem windows.dlllist.DllList --pid <PID>
+# Dumps
+python3 vol.py -f example.vmem -o dumps windows.dlllist.DllList --dump
+
+# Dump files
+mkdir dumps
+# --pid: PID of the targets is found by pslist
+python3 vol.py -f example.vmem -o dumps windows.dumpfiles.DumpFiles --pid <target-process-id>
+python3 vol.py -f example.vmem -o dumps windows.dumpfiles.DumpFiles --physaddr <address-of-target-file>
+```
+
+<br />
+
+## Redline
+
+[Redline](https://fireeye.market/apps/211364) is an endpoint security tool which provides host investigative capabilities to users to find signs of malicious activity through memory and file analysis and the development of a threat assessment profile.

@@ -1,0 +1,123 @@
+---
+title: Network Traffic Analysis (NTA)
+description:
+tags:
+    - Network
+refs:
+date: 2023-01-29
+draft: false
+---
+
+## Packet Analysis
+
+```sh
+wireshark example.pcap
+
+# Tcpdump
+sudo tcpdump -i eth0 icmp
+# output pcap file
+sudo tcpdump -i eth0 icmp -w /tmp/tcpdump.pcap
+```
+
+### Brim
+
+[Brim](https://www.brimdata.io/) is an application to search and analyze super-structured data.
+
+```sh
+brim sample.pcap
+```
+
+- **Filters**
+
+    ```sh
+    _path=="http" "example.com" id.resp_p==80 | cut ts, host, id.resp_p, uri | sort ts
+    
+    # Find UserAgent in HTTP requests
+    user_agent | cut _path,id.orig_h,id.resp_h,method,host,user_agent
+    ```
+
+### Snort
+
+**Snort** is a network intrusion detection system (NIDS) and intrusion prevention system (NIPS).
+
+```sh
+# Validate the configuration
+# -c: Identify the config file
+# -T: Test the configuration
+sudo snort -c /etc/snort/snort.conf -T
+
+# Sniffer mode
+# -d: Dump packet data
+# -e: Link-layer header grabbing
+# -v: Verbose mode
+sudo snort -dev
+# -X: Full packet dump mode
+sudo snort -X
+
+# Logger mode
+# -l: Logger mode
+sudo snort -dev -l .
+# -K ASCII: ASCII mode 
+sudo snort -dev -K ASCII -l .
+
+# IDS/IPS mode
+# -A full: full alert mode
+sudo snort -c /etc/snort/snort.conf -A full
+# Using local rules
+sudo snort -c /etc/snort/rules/local.rules -A full
+# -q: Quiet mode
+# --daq: Data aquisition
+# -i: Listen on interface <if>
+sudo snort -c local.rules -q --daq afpacket -i eth0:eth1 -A full
+# Wait until packets receiving, the file will be dumped.
+
+# Read generated logs
+sudo snort -r snort.log.xxxxxxxx
+# Filters
+sudo snort -r snort.log.xxxxxxxx -X
+sudo snort -r snort.log.xxxxxxxx tcp
+sudo snort -r snort.log.xxxxxxxx 'udp and port 53'
+
+# Investigate pcap file
+# -n: The first N packets
+sudo snort -c /etc/snort/snort.conf -q -r example.pcap -A full -n 10
+# --pcap-list: Multiple pcap files
+sudo snort -c /etc/snort/snort.conf -q --pcap-list="example.pcap example2.pcap" -A full -n 10
+```
+
+- Modify rules
+
+    We can edit **/etc/snort/rules/local.rules** or our custom **local.rules** in another directory.
+
+    ```sh
+    sudo vim /etc/snort/rules/local.rules
+    ```
+
+    Below is the example rules.
+
+    ```sh
+    # ICMP
+    alert icmp any any <> any any (msg:"ICMP Packet Found"; sid:1000001; rev:1;)
+
+    # Drop
+    drop tcp any any -> any any (sid:1000005;)
+    ```
+
+<br />
+
+## Detect a Type of Malware
+
+1. Extract files from PCAP.
+
+    1. Open target pcap file on Wireshark.
+    2. Select "File" -> "Export Options" -> "HTTP..."
+    3. Save the target file.
+
+2. Get the MD5 hash.
+
+    ```sh
+    md5sum suspicious.exe
+    ```
+
+3. Search on VirusTotal using the MD5 hash.
+
