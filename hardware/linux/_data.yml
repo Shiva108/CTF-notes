@@ -1,0 +1,18 @@
+category1: linux
+related_menus:
+  - title: Privilege Escalation
+    id: privilege-escalation
+  - title: Post Exploitation
+    id: post-exploitation
+  - title: Backup
+    id: backup
+  - title: Container
+    id: container
+  - title: Archive
+    id: archive
+  - title: Attack
+    id: attack
+  - title: Protocol
+    id: protocol
+  - title: Management
+    id: management
